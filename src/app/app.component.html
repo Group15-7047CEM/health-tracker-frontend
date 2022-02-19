@@ -1,0 +1,26 @@
+ <!-- <div *ngIf="_router.url != '/dashboard' "  id="app"> -->
+  <div  *ngIf="!(_router.url === '/health' || _router.url === '/dashboard' || _router.url === '/calculator' || _router.url === '/log' || _router.url === '/user' || _router.url ==='/maps' || _router.url ==='/steps' || _router.url === '/water' || _router.url ==='/sleep')">
+  
+  <nav  class="navbar navbar-expand navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/home" class="nav-link" routerLink="home">Home </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" >
+      
+      <li class="nav-item">
+        <a href="/signup" class="nav-link" routerLink="signup">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+   
+  </nav>
+  <!-- <div class="container">
+    <router-outlet></router-outlet>
+  </div> -->
+</div>  
+
+ <router-outlet></router-outlet> 

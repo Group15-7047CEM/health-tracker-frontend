@@ -1,0 +1,188 @@
+<div class="main-content" >
+    <div class="container-fluid">
+<div class="row">
+    <div class="col-sm-16">
+      <h1 class="centered">BMI CALCULATOR</h1>
+      <div class="row">
+        <div class="col-xs-8 col-sm-6">
+         <FORM NAME="myform">
+         <h1><span class="label label-default centered">Enter Your Height and Weight </span></h1>
+          <!-- row 1 weight & height -->
+            <div class="row">
+            <!-- Weight -->
+                <div class="col-xs-6"><div class="input-group">
+              <span class="input-group-addon">Weight</span>
+              <input type="text" Id="number1" class="form-control" aria-label="Amount (to the nearest dollar)" VALUE="" (keyup)="sum()"/> 
+              <span class="input-group-addon">kg</span>
+             </div></div>
+             <!-- Height -->
+                <div class="col-xs-6"><div class="input-group">
+            <span class="input-group-addon">Height</span>
+            <input type="text" ID="number2" class="form-control" aria-label="Amount (to the nearest dollar)" VALUE="" (keyup)="sum()"/>
+            <span class="input-group-addon">cm</span>
+            </div></div>
+            </div>
+            <!-- row 2 BMI  -->
+            <div class="row">
+                 <div class="col-sm-16">
+                 <!-- BMI Result -->
+                  <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1"> Your BMI is </span>
+                    <input type="text" class="form-control" id="result" name="result" aria-describedby="basic-addon1" #myNameElem>
+                  </div>
+                </div>
+            </div>
+            </FORM>
+        </div>
+        <div class="col-xs-4 col-sm-6">
+          <h1><span class="label label-default centered">Convert Pound and feet' inches" </span></h1>
+           <FORM NAME="cform">
+          <div class="row">
+          <!-- feet -->
+            <div class="col-xs-6 col-md-4"><div class="input-group">
+             <span class="input-group-addon" id="sizing-addon2" >Feet</span>
+              <input type="text" NAME="feet" class="form-control" aria-describedby="sizing-addon2" VALUE=""  (keyup)="convert()">
+        </div></div>
+          <!-- inches -->  
+            <div class="col-xs-6 col-md-4"><div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Inches</span>
+            <input type="text" NAME="inches" class="form-control" aria-describedby="sizing-addon2"  VALUE="" (keyup)="convert()">
+        </div></div>
+          <!-- centimeter -->
+            <div class="col-xs-6 col-md-4"><div class="input-group">
+           <span class="input-group-addon" id="sizing-addon2">cm</span>
+           <input type="text" id="cm" class="form-control" aria-describedby="sizing-addon2" #myNameFeetElem>
+        </div></div>
+          </div>      
+          <div class="row">
+          <!-- Pound -->
+            <div class="col-xs-6"><div class="input-group">
+         <span class="input-group-addon" id="sizing-addon2">Pound</span>
+         <input type="text" NAME="pound" class="form-control" aria-describedby="sizing-addon2"  (keyup)="pkconvert()">
+      </div></div>
+          <!-- Kilogram -->
+            <div class="col-xs-6"><div class="input-group">
+           <span class="input-group-addon" id="sizing-addon2">Kilogram</span>
+           <input type="text" ID="kg" class="form-control" aria-describedby="sizing-addon2">
+        </div></div>
+            </div>
+        
+        </FORM>
+      </div><!-- End of row 1 -->
+      <div class="row">
+        <div class="col-xs-8 col-sm-6">
+           <h1><span class="label label-default centered">BMI Level Indicator </span></h1>
+           <div class="panBMI Level Indicatorel panel-default">
+           <table class="table">
+    <tr>
+    <th>Category</th>
+        <th>From</th>
+        <th>To</th>
+    </tr>
+    
+    <tr>
+  <td>Very severely underweight</td>
+  <td></td>
+  <td>15.0</td>
+  </tr>
+      
+      <tr>
+  <td>Severely underweight</td>
+  <td>15</td>
+  <td>16</td>
+  </tr>
+      
+      <tr class="bg-primary">
+  <td>Underweight</td>
+  <td>16</td>
+  <td>18.5</td>
+  </tr>
+      
+      <tr class="bg-success">
+  <td>Normal (healthy weight)</td>
+  <td>18.5</td>
+  <td>25</td>
+  </tr>
+      
+      <tr class="table-active">
+  <td>Overweight</td>
+  <td>25</td>
+  <td>30</td>
+  </tr>
+      
+      <tr class="bg-info">
+  <td>Obese Class I (Moderately obese)</td>
+  <td>30</td>
+  <td>35</td>
+  </tr>
+      
+     <tr class="bg-warning" >
+       <td >
+    Obese Class II (Severely obese)</td>
+  <td>35</td>
+  <td>40</td>
+  </tr>
+      
+      <tr class="bg-danger">
+  <td>Obese Class III (Very severely obese)</td>
+  <td>40</td>
+  <td></td>
+  </tr>
+    
+    </table></div>
+        </div>
+        <div class="col-xs-4 col-sm-6">
+          <h1><span class="label label-default centered">Percentage of Body fat</span></h1>
+         <FORM NAME="fform">
+          <!-- age -->
+          <div class="row">
+                 <div class="col-sm-16">
+                <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1" (keyup)="check()">AGE</span>
+          <input type="text" class="form-control" (keyup)="check()" name="age"  aria-describedby="basic-addon1">
+        </div>
+                 </div>
+            </div>
+            <!-- Gender -->
+             <div class="row">
+             <fieldset class="form-group">
+               <div class="col-xs-6 col-md-4"><b class="size">Gender</b></div>
+            <div class="col-xs-6 col-md-4"><div class="form-check">
+            <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="male"  (keyup)="check()" value="option1" checked> Male
+            </label>
+          </div></div>
+            <div class="col-xs-6 col-md-4"><div class="form-check">
+            <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios"  (keyup)="check()" id="female" value="option2"> Female
+            </label>
+          </div></div>
+             </fieldset>
+          </div>     
+          <!-- BMI -->
+           <div class="row">
+                 <div class="col-sm-16">
+                 <div class="input-group">
+    <span class="input-group-addon" id="basic-addon1" (keyup)="check()">BMI</span>
+    <input type="text" class="form-control" name="bmi" (keyup)="check()" aria-describedby="basic-addon1">
+  </div>
+                 </div>
+            </div>
+            <!-- Fat % -->
+           <div class="row">
+                 <div class="col-sm-16">
+                 <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">Your Fat % is </span>
+          <input type="text" class="form-control" id="fat"  aria-describedby="basic-addon1">
+        </div>
+                 </div>
+            </div> 
+            </FORM><br>
+        </div>
+  
+      </div><!-- End of row 2 -->
+  
+    </div><!-- End of col -sm -16 -->
+  </div><!-- End of row -->
+  </div>
+  </div>

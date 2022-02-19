@@ -1,0 +1,30 @@
+<form>
+  <div class="form-group">
+    <label for="exampleInputName">Name:</label>
+    <input
+    type="text"
+    class="form-control"
+    placeholder="Name"
+    #name>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputPeso">Weight</label>
+        <input
+        type="number"
+        class="form-control"
+        placeholder="Weight"
+        #weight>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputAltura">Height</label>
+        <input
+        type="number"
+        class="form-control"
+        placeholder="Height"
+        #height>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="validationResult.error" class="alert alert-danger">{{ validationResult.message }}
+  </div>
+  <button type="button" class="btn btn-secondary" (click)="addPatient()">Calculate!</button>
