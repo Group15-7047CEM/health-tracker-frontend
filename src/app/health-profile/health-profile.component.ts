@@ -13,7 +13,7 @@ export class HealthProfileComponent implements OnInit {
               private properties : Properties,) { }
 
   ngOnInit(): void {
-    this.submitHealthDetails();
+    // this.submitHealthDetails(); // todo: change logic
   }
 
   submitHealthDetails(){
