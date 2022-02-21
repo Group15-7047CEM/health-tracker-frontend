@@ -8,7 +8,7 @@
       <h3 class="day"><span>8</span> Glasses</h3>
     </div>
   </div>
-
+  
   <div class="lg-tt-rr" style="text-align:center;">
     <h3 class="day ng-binding">
       <span class="ng-binding">0</span> Glasses
@@ -18,7 +18,7 @@
 
   <button type="button" class="btn btn-primary pull-right" (click)="show()">Log Water</button>
 
-
+  
 
 
   <div class="tab-content" id="myTabContent">
@@ -86,3 +86,34 @@
       </div>
     </div>
   </div>
+
+  <!-- Chart + Entries table -->
+  <div class="row">
+    <div class="col-8">
+      <h3 class="day ng-binding">
+        Hydration Tracker
+      </h3>
+      <div echarts [options]="chartOption" class="demo-chart"></div>
+    </div>
+    <div class="col-4" style="height: 200px;">
+      <h3 class="day ng-binding">
+        Water Intake Entries
+      </h3>
+      <table class="table table-striped" style="overflow-x: auto;">
+        <thead>
+        <tr>
+          <th scope="col" >Tracked date</th>
+          <th scope="col" >Water intake (in ml)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let reading of readings">
+          <td>{{reading.trackedDate | date}}</td>
+          <td>{{reading.waterIntake}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>
