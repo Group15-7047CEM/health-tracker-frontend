@@ -1,90 +1,126 @@
 <div class="container">
-    
-    <!-- <h1 class="text-center">Register with bootstrap popup</h1> -->
-    
 
-    <div class="col-sm-12">
+   <!-- <h1 class="text-center">Register with bootstrap popup</h1> -->
+
+
+   <div class="col-sm-12">
       <div class="lg-tt-rr">
-        <p>Recommended</p>
-        <h3 class="day"><span>10000</span> Steps</h3>
+         <p>Recommended</p>
+         <h3 class="day"><span>10000</span> Steps</h3>
       </div>
-    </div>
+   </div>
 
-  <div class="lg-tt-rr" style="text-align:center;">
-   <h3 class="day ng-binding"><span class="ng-binding">0</span> Step</h3>
-   <p>Recently logged steps</p>
- </div>
-   
- <button type="button" class="btn btn-primary pull-right" (click) = "show()">Log Steps</button> 
+   <div class="lg-tt-rr" style="text-align:center;">
+      <h3 class="day ng-binding"><span class="ng-binding">0</span> Step</h3>
+      <p>Recently logged steps</p>
+   </div>
+
+   <button type="button" class="btn btn-primary pull-right" (click)="show()">Log Steps</button>
 
 
-    <div class="tab-content" id="myTabContent">
+   <div class="tab-content" id="myTabContent">
       <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-    </div>
-  <!-- Creates the bootstrap modal where the image will appear -->
-  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Log Steps</h4>
-      </div>
-      <div class="modal-body">
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                      <div class="row">
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                                  <label>Date</label>
-                                  <input type="text" formControlName="firstname" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
-                                  <!-- <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+   </div>
+   <!-- Creates the bootstrap modal where the image will appear -->
+   <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h4 class="modal-title" id="myModalLabel">Log Steps</h4>
+            </div>
+            <div class="modal-body">
+               <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label>Date</label>
+                           <input type="text" formControlName="firstname" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                           <!-- <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
                                         <div *ngIf="f.firstname.errors.required">FirstName is required</div>
                                   </div> -->
-                               </div>
-                         </div> 
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>Start Time</label>
-                               
-                               <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                               <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label>Start Time</label>
+
+                           <input type="text" formControlName="email" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                           <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                   <div *ngIf="f.email.errors.required">Email is required</div>
                                   <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                                </div> -->
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                               <div class="form-group">
-                                  <label>Duration</label>
-                                  <input type="text" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
-                                  <!-- <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label>Duration</label>
+                           <input type="text" formControlName="mobile" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
+                           <!-- <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                                      <div *ngIf="f.mobile.errors">Mobile must be Valid and at least 10 digits</div>
                                     
                                   </div> -->
-                               </div>
-                            </div>
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>Steps</label>
-                               <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                               <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <div class="form-group">
+                           <label>Steps</label>
+                           <input type="password" formControlName="password" class="form-control"
+                              [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                           <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                   <div *ngIf="f.password.errors.required">Password is required</div>
                                   <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                                </div> -->
-                            </div>
-                         </div>
-             </div>
-             <button type="submit" class="btn btn-primary">Save</button>
-             <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Cancel</button>
+                        </div>
+                     </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Save</button>
+                  <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="hide()">Cancel</button>
 
-                </form>
-     
-    
-  </div>
-      <!-- <div class="modal-footer">
+               </form>
+
+
+            </div>
+            <!-- <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
       
       </div> -->
-    </div>
-  </div>
-  </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Chart + Entries table -->
+   <div class="row">
+      <div class="col-8">
+      <h3 class="day ng-binding">
+         Activity Tracker
+      </h3>
+      <div echarts [options]="chartOption" class="demo-chart"></div>
+      </div>
+      <div class="col-4" style="height: 200px;">
+      <h3 class="day ng-binding">
+         Steps Entries
+      </h3>
+      <table class="table table-striped" style="overflow-x: auto;">
+         <thead>
+         <tr>
+            <th scope="col" >Tracked date</th>
+            <th scope="col" >Steps</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr *ngFor="let reading of readings">
+            <td>{{reading.trackedDate | date}}</td>
+            <td>{{reading.steps}}</td>
+         </tr>
+         </tbody>
+      </table>
+      </div>
+   </div>
+
+</div>
