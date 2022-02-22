@@ -1,10 +1,11 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import {Routes, RouterModule } from '@angular/router';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http'; 
 import { IdentityService } from './auth/identity.service';
 import { Properties } from './properties';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 import { AppRoutingModule } from './app.routing';
 import { NavbarModule } from './shared/navbar/navbar.module';
@@ -37,6 +38,14 @@ import { StepsComponent } from './steps/steps.component';
     DlDateTimeDateModule,  
     DlDateTimePickerModule,
     DateTimePickerModule,
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    }),
   ],
   declarations: [
     AppComponent,

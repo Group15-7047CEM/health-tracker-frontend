@@ -23,11 +23,11 @@ export class HealthProfileComponent implements OnInit {
       "trackedDate": "2022-02-17"
     }
 
-    this.http.post(this.properties.API_ENDPOINT + '/health-tracking/weight', obj).subscribe(data => {
-        alert(JSON.stringify(data));
-    }, error => {
-      console.log("health profile error");
-    });
+    // this.http.post(this.properties.API_ENDPOINT + '/health-tracking/weight', obj).subscribe(data => {
+    //     alert(JSON.stringify(data));
+    // }, error => {
+    //   console.log("health profile error");
+    // });
     
   }
 
