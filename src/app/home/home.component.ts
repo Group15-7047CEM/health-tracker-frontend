@@ -1,8 +1,10 @@
-import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
-import { LegendItem, ChartType } from '../lbd/lbd-chart/lbd-chart.component';
-import * as Chartist from 'chartist';
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { NgForm } from '@angular/forms';
+import {FormGroup} from '@angular/forms';
+import { Properties } from '../properties';
+import { HttpClient} from "@angular/common/http";
+import { IdentityService } from '../auth/identity.service';
+import {Router} from '@angular/router'; 
 
 @Component({
   selector: 'app-home',
@@ -10,24 +12,37 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  private roles: string[] = [];
-  isLoggedIn = false;
-  showAdminBoard = false;
-  showModeratorBoard = false;
-  username?: string;
-  constructor(private tokenStorageService: TokenStorageService) { }
+
+  user : any = {};
+  signupForm: FormGroup;
+
+  constructor(private http: HttpClient,
+              private properties : Properties,
+              private IdentityService : IdentityService,private router:Router) { }
+
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.username = user.username;
-    }
   }
-  logout(): void {
-    this.tokenStorageService.signOut();
-    window.location.reload();
+
+
+  create(signupForm: NgForm){
+
+    alert(JSON.stringify(this.user));
+    this.user.role = "participant";
+
+    this.http.post(this.properties.API_ENDPOINT + '/auth/signup', this.user).subscribe(data => {
+     // var loginPromise = this.IdentityService.getAccessToken("guyritchie.cc@yopmail.com", "Healthify@123");
+
+     var loginPromise = this.IdentityService.getAccessToken(this.user.email, this.user.password);
+      var scope = this;
+      loginPromise.then(function(data) {
+        scope.router.navigate(['/', 'health']);
+      });
+    }, error => {
+      console.log("signup error");
+    });
+
+
+
   }
+
 }

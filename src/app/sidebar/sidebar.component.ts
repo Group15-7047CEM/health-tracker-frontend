@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/water', title: 'Water',  icon:'pe-7s-map-marker', class: '' },
     { path: '/steps', title: 'Steps',  icon:'pe-7s-map-marker', class: '' },
     { path: '/sleep', title: 'Sleep',  icon:'pe-7s-map-marker', class: '' },
+    { path: '/food', title: 'Food',  icon:'pe-7s-map-marker', class: '' },
     
     
     // { path: '/signup', title: 'Signup',  icon:'pe-7s-bell', class: '' },

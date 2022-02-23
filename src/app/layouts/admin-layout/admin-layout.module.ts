@@ -8,7 +8,6 @@ import { NguiMapModule} from '@ngui/map';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
-import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
 import { TablesComponent } from '../../tables/tables.component';
 // import { TypographyComponent } from '../../typography/typography.component';
@@ -34,7 +33,6 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
   ],
   declarations: [
-    HomeComponent,
     UserComponent,
     TablesComponent,
     CalculatorComponent,

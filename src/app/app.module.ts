@@ -19,6 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { WaterComponent } from './water/water.component';
 import { SleepComponent } from './sleep/sleep.component';
 import { StepsComponent } from './steps/steps.component';
+import { FoodComponent } from './food/food.component';
+import { HomeComponent } from './home/home.component';
+
 
 
 
@@ -44,7 +47,9 @@ import { StepsComponent } from './steps/steps.component';
     LoginComponent,
     WaterComponent,
     SleepComponent,
-    StepsComponent
+    StepsComponent,
+    FoodComponent,
+    HomeComponent
   ],
   providers: [
     Properties,

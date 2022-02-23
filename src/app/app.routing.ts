@@ -4,11 +4,14 @@ import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { HomeComponent } from './home/home.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 const routes: Routes =[
   { path: 'signup',         component: SignupComponent },
   { path: 'login',          component: LoginComponent },
+  {path : 'home',           component: HomeComponent },
+
   {
     path: '',
     redirectTo: 'home',

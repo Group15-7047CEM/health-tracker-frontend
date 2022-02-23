@@ -7,7 +7,7 @@
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form #userForm="ngForm" (ngSubmit)="updateUserProfile(userForm, $event)" autocomplete="off" id="userForm"  role="form" name="userForm" novalidate>
                             <div class="row">
                                 <!-- <div class="col-md-5">
                                     <div class="form-group">
@@ -17,19 +17,31 @@
                                 </div> -->
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="priyanka">
+                                        <label for="firstName">First Name</label>
+                                        <!-- <input type="text" class="form-control" placeholder="Username" value="priyanka"> -->
+                                        <input id="firstName" type="text" name="firstName" class="form-control" [(ngModel)]="user.firstName" #firstName="ngModel" placeholder="First Name">
                                     </div>
                                 </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="lastname">Last Name </label>
+                                        <!-- <input type="text" class="form-control" placeholder="Username" value="priyanka"> -->
+                                        <input id="lastName" type="text" name="lastName" class="form-control" [(ngModel)]="user.lastName" #lastName="ngModel" placeholder="Last Name">
+                                    </div>
+                                </div>
+
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" disabled placeholder="Email" value ="priyanka@gmail.com">
+                                        <label for="email">Email address</label>
+                                        <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" disabled placeholder="Email">
+
+                                        <!-- <input type="email" class="form-control" disabled placeholder="Email" value ="priyanka@gmail.com"> -->
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>First Name</label>
@@ -42,13 +54,15 @@
                                         <input type="text" class="form-control" placeholder="Last Name" value="garapati">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
+                                        <label for = "address">Address</label>
+                                        <input id="address" type="text" name="address" class="form-control" [(ngModel)]="user.address" #address="ngModel"  placeholder="Address">
+
+                                        <!-- <input id = "" type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"> -->
                                     </div>
                                 </div>
                             </div>
@@ -56,20 +70,26 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>City</label>
-                                        <input type="text" class="form-control" placeholder="City" value="coventry">
+                                        <label for="city">City</label>
+                                        <!-- <input type="text" class="form-control" placeholder="City" value="coventry"> -->
+                                        <input id="city" type="text" name="city" class="form-control" [(ngModel)]="user.city" #city="ngModel"  placeholder="City">
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Country</label>
-                                        <input type="text" class="form-control" placeholder="Country" value="UK">
+                                        <label for="country">Country</label>
+                                        <!-- <input type="text" class="form-control" placeholder="Country" value="UK"> -->
+                                        <input id="country" type="text" name="country" class="form-control" [(ngModel)]="user.country" #country="ngModel"  placeholder="Country">
+
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Postal Code</label>
-                                        <input type="number" class="form-control" placeholder="ZIP Code">
+                                        <label for="postcode">Postal Code</label>
+                                        <!-- <input type="number" class="form-control" placeholder="ZIP Code"> -->
+                                        <input id="postcode" type="text" name="postcode" class="form-control" [(ngModel)]="user.postcode" #postcode="ngModel"  placeholder="Postcode">
+
                                     </div>
                                 </div>
                             </div>
@@ -97,7 +117,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-md-4">
+             <div class="col-md-4">
                 <div class="card card-user">
                     <div class="image">
                         <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
@@ -107,24 +127,24 @@
                             <a href="#">
                                 <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
 
-                                <h4 class="title">Mike Andrew<br />
-                                    <small>michael24</small>
+                                <h4 class="title">{{user.firstName}}<br />
+                                    <small>{{user.lastName}}</small>
                                 </h4>
                             </a>
                         </div>
-                        <p class="description text-center"> "Lamborghini Mercy <br>
-                            Your chick she so thirsty <br>
-                            I'm in that two seat Lambo"
+                        <p class="description text-center"> {{user.address}} <br>
+                            {{user.city}} <br>
+                            {{user.country}} {{user.postcode}}
                         </p>
                     </div>
                     <hr>
-                    <div class="text-center">
+                    <!-- <div class="text-center">
                         <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-                    </div>
+                    </div> -->
                 </div>
-            </div> -->
+            </div> 
         </div>
     </div>
 </div>

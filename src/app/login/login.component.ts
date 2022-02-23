@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
     var scope = this;
     loginPromise.then(function(data) {
-          scope.router.navigate(['/', 'health']);
+          scope.router.navigate(['/', 'dashboard']);
      }, error => {
       console.log("login error");
     });

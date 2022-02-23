@@ -7,7 +7,7 @@
                         <h4 class="title">Health Status</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form #healthForm="ngForm" (ngSubmit)="submitHealthDetails(healthForm)" autocomplete="off" id="healthForm"  role="form" name="healthForm" novalidate>
                             <div class="row">
                                 <!-- <div class="col-md-5">
                                     <div class="form-group">
@@ -17,25 +17,28 @@
                                 </div> -->
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Weight</label>
-                                        <input type="num" class="form-control" placeholder="weight" >
+                                        <label for="currentWeight" >Weight</label>
+                                        <input id="currentWeight" type="text" name="currentWeight" class="form-control" [(ngModel)]="user.currentWeight" #currentWeight="ngModel" placeholder="Weight">
+                                        <!-- <input type="num" class="form-control" placeholder="weight" > -->
                                     </div>
                                 </div>                             
                             </div>
                             <div class = "row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Height in feet</label>
-                                        <input type="num" class="form-control"  placeholder="Height in ft" >
+                                        <label for="height">Height in cms</label>
+                                        <input id="height" type="text" name="height" class="form-control" [(ngModel)]="user.height" #height="ngModel" placeholder="Height">
+
+                                        <!-- <input type="num" class="form-control"  placeholder="Height in ft" > -->
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                          <label for="exampleInputEmail1">Height in inch</label> 
                                         <input type="num" class="form-control"  placeholder="Height in inch" >
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
 
                            
@@ -43,8 +46,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Date of birth</label>
-                                        <input type="num" class="form-control"  placeholder="Date of birth" >
+                                        <label for="dob" >Date of birth</label>
+                                        <input id="dob" type="text" name="dob" class="form-control" [(ngModel)]="user.dob" #dob="ngModel" placeholder="Date of birth">
                                           
                                     </div>
                                 </div>
@@ -54,12 +57,13 @@
                                                       
                                 <div class="col-md-4">
                                       <div class="form-group">
-                                        <label for="exampleFormControlSelect1">Gender</label>
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                          <option>Select </option>
+                                        <label for="gender">Gender</label>
+                                        <select class="form-control" id="gender">
+                                            <option *ngFor="let industry of industries"  [ngValue]="industry.id">{{industry.id}} </option>  
+                                          <!-- <option>Select </option>
                                           <option>Male</option>
                                           <option>Female</option>
-                                          <option>Others</option>                                       
+                                          <option>Others</option>                                        -->
                                         </select>
                                       </div>
                                 </div>

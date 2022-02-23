@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
      var loginPromise = this.IdentityService.getAccessToken(this.user.email, this.user.password);
       var scope = this;
       loginPromise.then(function(data) {
-        scope.router.navigate(['/', 'health']);
+        scope.router.navigate(['/', 'dashboard']);
       });
     }, error => {
       console.log("signup error");
