@@ -30,7 +30,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    LbdModule,
+    LbdModule,  
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
   ],
   declarations: [
@@ -45,10 +45,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
     HealthProfileComponent,
     UserProfileComponent,
     GoalsComponent,
-    LogComponent,
-
-   
-  
+    LogComponent
   ]
 })
 

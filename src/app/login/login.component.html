@@ -1,12 +1,269 @@
-<form #loginForm="ngForm" (ngSubmit)="submit(loginForm)" id="loginForm" >
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" placeholder="Email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input id="password" type="password" name="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" placeholder="Password">
-  </div>
-  
-  <button   class="btn btn-primary">Login</button>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/light-bootstrap-dashboard.css" rel="stylesheet" />
+
+	<!-- <link href="./css/bootstrap.min.css" rel="stylesheet">
+	<link href="./css/custom.scss" rel="stylesheet"> -->
+  <!-- <script src="https://kit.fontawesome.com/6c9a711f99.js" crossorigin="anonymous"></script> -->
+  <!-- <link href="./css/bootstrap.min.css" rel="stylesheet"> -->
+  <!-- <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v1/css/main.css"> -->
+
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      font-family:Poppins;
+    }
+
+    
+    .login-bg .row{
+      min-height: 80vh;
+    }
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+    .form-signin h1{
+      font-size: 25px;
+      font-weight: 600 !important;
+    }
+    .login-form {
+      /*background-color: #fff;*/
+      /*box-shadow: 0px 0px 5px 0px #a4a4a4;*/
+      min-height: 30vh;
+      border-radius: 10px;
+    }
+    .side-image{
+      background: url('../assets/img/Group 278.svg');
+      min-height: 400px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .form-floating {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .form-floating>.form-control {
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid #121212;
+      background: unset;
+    }
+    .form-floating>.form-control:focus{
+      box-shadow: unset;
+      border-bottom: 2px solid #39126d !important;
+    }
+    .btn{
+      font-weight: 500;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .btn:focus{
+      box-shadow: unset;
+    }
+    .login-bg{
+      background: #4c1f8c;
+      height: 100%;
+      padding-top: 10vh;
+      position: relative;
+    }
+    .login-bg:before{
+      background: url(../assets/img/david-marioni-F_lns58a_ec-unsplash.JPG);
+      position: absolute;
+      height: 100%;
+      content: '';
+      width: 100%;
+      top: 0;
+      opacity: 0.1;
+      background-size: 23px;
+      filter: invert(1);
+    }
+    .login-container .row{
+      background: #fff url('../assets/img/bg-pattern.svg');
+      height: 400px;
+      border-radius: 15px;
+      position: relative;
+      z-index: 2;
+      background-size: 100% 100%;
+      background-position: 313px;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .login-container .row:after{
+      content: '';
+      background-color: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.9;
+    }
+    .login-container .row:before{
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      background-color: #e8ddff;
+      z-index: -1;
+      border-top-left-radius: 10%;
+      border-bottom-left-radius: 10%;
+    }
+    button.btn-info.btn.sign-in-btn{
+      color: #fff;
+      background-color: #39126d;
+      border-color: #39126d;
+      border-radius: 109px !important;
+      opacity: 1;
+      margin-top: 15px;
+    }
+    .login-container a{
+      color: #39126d;
+      transition: all 0.3s ease;
+    }
+    .login-container a:hover{
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #39126d;
+    }
+    .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+      opacity: 1;
+    }
+    #pass-view {
+      margin-left: 94%;
+      margin-top: -19px;
+      display: inline-block;
+      position: absolute;
+      top: 45px;
+    }
+    #pass-view.pass-visble i:before{
+      content: "\f070";
+    }
+    .form-floating>.form-control:focus, .form-floating>.form-control:not(:placeholder-shown) {
+      padding-top: 1.625rem;
+      padding-bottom: 0;
+    }
+    @media (min-width: 1024px){
+      .login-bg .container{
+        width: 1000px;
+      }
+    }
+    @media (max-width: 768px){
+      .login-container .row:before{
+        width: 100%;
+        height: 120%;
+      }
+      .login-container .row{
+        box-shadow:unset;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <section class="login-bg">
+    <div class="container">
+      <div class="login-container">
+        <div class="row align-items-center">          
+          <div class="col-md-7 col-sm-6">
+            <div class="side-image"></div>                    
+          </div>
+          <div class="col-md-5 col-sm-6">
+            <div class="login-form">
+              <main class="form-signin px-5">
+                 <form #loginForm="ngForm" (ngSubmit)="submit(loginForm)" id="loginForm">
+                  <img class="mb-4 mx-auto my-3 d-block" alt="ktechproducts logo" src="../assets/img/ktech-logo.jfif" alt="" width="250" height="60">
+                  <h1 class="h3 mb-3 fw-normal text-center">Login</h1>
+
+                  <div class="form-floating">
+                    <input id="email" type="email" name="email" class="form-control" for="exampleInputEmail1" [(ngModel)]="user.email" #email="ngModel" placeholder="Email">
+                    <label for="exampleInputEmail1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 101.059 101.314">
+                      <path id="arroba" d="M101.033,44.049a50.508,50.508,0,1,0-56.718,57.223,52.308,52.308,0,0,0,6.776.443,50.007,50.007,0,0,0,25.97-7.222,4.887,4.887,0,0,0-5.043-8.372,40.733,40.733,0,1,1,17.5-21.569,7.056,7.056,0,0,1-6.773,4.58,7.291,7.291,0,0,1-7.281-7.281V31.67a4.886,4.886,0,1,0-9.773,0v.046a24.432,24.432,0,1,0,1.762,37.537,17.018,17.018,0,0,0,15.291,9.652A16.832,16.832,0,0,0,98.756,67.751a50.607,50.607,0,0,0,2.277-23.7Zm-50,21.826A14.659,14.659,0,1,1,65.694,51.216,14.659,14.659,0,0,1,51.035,65.875Z" transform="translate(-0.481 -0.401)"/>
+                    </svg>&nbsp; Email address</label>
+                  </div>
+                  <div class="form-floating">
+                    <input id="password" type="password" name="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" placeholder="Password">
+                    <label for="exampleInputPassword1"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 242.25 304">
+                      <g id="padlock" transform="translate(-52)">
+                        <g id="Group_548" data-name="Group 548" transform="translate(52)">
+                          <g id="Group_547" data-name="Group 547">
+                            <path id="Path_969" data-name="Path 969" d="M258.625,111.625h-21.4V62.8C237.228,28.172,208.461,0,173.1,0s-64.125,28.172-64.125,62.8v48.824H87.625A35.665,35.665,0,0,0,52,147.25V268.375A35.665,35.665,0,0,0,87.625,304h171a35.665,35.665,0,0,0,35.625-35.625V147.25A35.665,35.665,0,0,0,258.625,111.625ZM132.728,62.8c0-21.533,18.112-39.051,40.375-39.051S213.478,41.268,213.478,62.8v48.824h-80.75ZM270.5,268.375a11.888,11.888,0,0,1-11.875,11.875h-171A11.888,11.888,0,0,1,75.75,268.375V147.25a11.888,11.888,0,0,1,11.875-11.875h171A11.888,11.888,0,0,1,270.5,147.25Z" transform="translate(-52)"/>
+                          </g>
+                        </g>
+                        <g id="Group_550" data-name="Group 550" transform="translate(151.156 169.812)">
+                          <g id="Group_549" data-name="Group 549">
+                            <path id="Path_970" data-name="Path 970" d="M240.969,286a21.966,21.966,0,0,0-11.9,40.433V352.5a11.875,11.875,0,0,0,23.75,0V326.461A21.966,21.966,0,0,0,240.969,286Z" transform="translate(-219 -286)"/>
+                          </g>    </g>  </g></svg> &nbsp;Password</label>
+                           <!-- <span id="pass-view" onclick="myFunction()"><i class="fa-solid fa-eye"></i></span>  -->
+                        </div>
+
+                         <!-- <div class="checkbox mb-3">
+                          <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                          </label>
+                        </div>  -->
+                        <button class="w-100 btn btn-lg btn-info sign-in-btn" type="submit">Sign in <span> &nbsp;<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="25" height="20" viewBox="0 0 496.091 521.349">
+                          <g id="Group_546" data-name="Group 546" transform="translate(-577.991 -606)">
+                            <path id="refer" d="M403.777,147.918C403.777,66.355,337.418,0,255.859,0S107.941,66.355,107.941,147.918a147.87,147.87,0,0,0,64.223,121.895A256.26,256.26,0,0,0,0,511.715s-1.044,9.336,18.76,9.628,21.217-9.628,21.217-9.628c0-119.035,96.844-215.879,215.883-215.879,81.559,0,147.918-66.355,147.918-147.918ZM255.859,255.859A107.941,107.941,0,1,1,363.8,147.918,108.063,108.063,0,0,1,255.859,255.859ZM496.065,362.548c1.256,21.253-71.593,96.6-78.155,99.339s-15.623-.639-22.69-7.706-8.038-16.676-5.579-20.564,46.832-46.832,46.832-46.832H401.8a87.058,87.058,0,0,0-86.941,86.871s.709,36.443-.035,38.074-9.177,8.968-21.068,9.14a22.543,22.543,0,0,1-18.909-9.171c-1.035-1.505.031-38.078.031-38.078.059-69.926,57-126.816,126.922-126.816h32.672S392,304.759,389.641,301.973s-1.062-13.156,6.005-20.223,16.825-11.42,22.264-8.043S494.809,341.3,496.065,362.548Zm0,0" transform="translate(578 606)"/>
+                          </g>                  </svg></span></button>
+                          <!-- <p class="pt-5 pb-3 text-center text-dark">Forgot <a href="#">Password?</a></p> -->
+                        </form> 
+
+                        <!-- <form #loginForm="ngForm" (ngSubmit)="submit(loginForm)" id="loginForm" >
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" placeholder="Email">
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input id="password" type="password" name="password" class="form-control" [(ngModel)]="user.password" #password="ngModel" placeholder="Password">
+                          </div>
+                          
+                          <button   class="btn btn-primary">Login</button>
+                        </form> -->
+
+                      </main>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <script type="text/javascript">
+
+            function myFunction() {
+              var element = document.getElementById("pass-view");
+              element.classList.toggle("pass-visble");
+              var x = document.getElementById("floatingPassword");
+              if (x.type === "password") {
+                x.type = "text";
+              } else {
+                x.type = "password";
+              }
+            }           
+          </script>
+          <!-- <script type="text/javascript" src="js/jquery.js"></script> -->
+          <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+        </body>
+        </html>

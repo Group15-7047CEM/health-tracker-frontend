@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   create(signupForm: NgForm){
 
     alert(JSON.stringify(this.user));
-
+    this.user.role = "participant";
 
     this.http.post(this.properties.API_ENDPOINT + '/auth/signup', this.user).subscribe(data => {
      // var loginPromise = this.IdentityService.getAccessToken("guyritchie.cc@yopmail.com", "Healthify@123");

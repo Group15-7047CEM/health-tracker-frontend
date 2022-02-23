@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:4200/#/login -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!--<base href="/">--><base href=".">
+    
+    <link rel="icon" type="image/png" href="http://localhost:4200/assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Light Bootstrap Dashboard by Creative Tim</title>
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Animate -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css" rel="stylesheet"> -->
+
+    <!--     Fonts and icons     -->
+    <link href="./Light Bootstrap Dashboard by Creative Tim_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./Light Bootstrap Dashboard by Creative Tim_files/css" rel="stylesheet" type="text/css">
+    <link href="./Light Bootstrap Dashboard by Creative Tim_files/pe-icon-7-stroke.css" rel="stylesheet">
+
+    <link href="./Light Bootstrap Dashboard by Creative Tim_files/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="./Light Bootstrap Dashboard by Creative Tim_files/bootstrap.bundle.min.js.download" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="./Light Bootstrap Dashboard by Creative Tim_files/popper.min.js.download" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="./Light Bootstrap Dashboard by Creative Tim_files/bootstrap.min.js.download" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    
+   
+    <style media="screen">
+
+    #loader {
+      position: absolute;
+      display: block;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 1;
+      -webkit-transform: translate3d(0, -50%, 0);
+      -moz-transform: translate3d(0, -50%, 0);
+      -o-transform: translate3d(0, -50%, 0);
+      -ms-transform: translate3d(0, -50%, 0);
+      transform: translate3d(0, -50%, 0);
+      text-align: center;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      top: 50%; }
+
+    </style>
+<link rel="stylesheet" href="./Light Bootstrap Dashboard by Creative Tim_files/styles.css"><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzaWdudXAuY29tcG9uZW50LmNzcyJ9 */</style><style>html[_ngcontent-wpl-c49], body[_ngcontent-wpl-c49] {
+      height: 100%;
+      font-family:Poppins;
+    }
+
+    
+    .login-bg[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]{
+      min-height: 80vh;
+    }
+    .form-signin[_ngcontent-wpl-c49]   .checkbox[_ngcontent-wpl-c49] {
+      font-weight: 400;
+    }
+    .form-signin[_ngcontent-wpl-c49]   h1[_ngcontent-wpl-c49]{
+      font-size: 25px;
+      font-weight: 600 !important;
+    }
+    .login-form[_ngcontent-wpl-c49] {
+      
+      
+      min-height: 30vh;
+      border-radius: 10px;
+    }
+    .side-image[_ngcontent-wpl-c49]{
+      background: url('../assets/img/student-login.svg');
+      min-height: 400px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    .form-signin[_ngcontent-wpl-c49]   .form-floating[_ngcontent-wpl-c49]:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin[_ngcontent-wpl-c49]   input[type="email"][_ngcontent-wpl-c49] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin[_ngcontent-wpl-c49]   input[type="password"][_ngcontent-wpl-c49] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .form-floating[_ngcontent-wpl-c49] {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49] {
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid #121212;
+      background: unset;
+    }
+    .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49]:focus{
+      box-shadow: unset;
+      border-bottom: 2px solid #39126d !important;
+    }
+    .btn[_ngcontent-wpl-c49]{
+      font-weight: 500;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .btn[_ngcontent-wpl-c49]:focus{
+      box-shadow: unset;
+    }
+    .login-bg[_ngcontent-wpl-c49]{
+      background: #4c1f8c;
+      height: 100%;
+      padding-top: 10vh;
+      position: relative;
+    }
+    .login-bg[_ngcontent-wpl-c49]:before{
+      background: url(../assets/img/hexagon-white.svg);
+      position: absolute;
+      height: 100%;
+      content: '';
+      width: 100%;
+      top: 0;
+      opacity: 0.1;
+      background-size: 23px;
+      filter: invert(1);
+    }
+    .login-container[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]{
+      background: #fff url('../assets/img/bg-pattern.svg');
+      height: 400px;
+      border-radius: 15px;
+      position: relative;
+      z-index: 2;
+      background-size: 100% 100%;
+      background-position: 313px;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .login-container[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]:after{
+      content: '';
+      background-color: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.9;
+    }
+    .login-container[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]:before{
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      background-color: #e8ddff;
+      z-index: -1;
+      border-top-left-radius: 10%;
+      border-bottom-left-radius: 10%;
+    }
+    button.btn-info.btn.sign-in-btn[_ngcontent-wpl-c49]{
+      color: #fff;
+      background-color: #39126d;
+      border-color: #39126d;
+      border-radius: 109px !important;
+      opacity: 1;
+      margin-top: 15px;
+    }
+    .login-container[_ngcontent-wpl-c49]   a[_ngcontent-wpl-c49]{
+      color: #39126d;
+      transition: all 0.3s ease;
+    }
+    .login-container[_ngcontent-wpl-c49]   a[_ngcontent-wpl-c49]:hover{
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #39126d;
+    }
+    .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49]:focus ~ label[_ngcontent-wpl-c49], .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49]:not(:placeholder-shown) ~ label[_ngcontent-wpl-c49], .form-floating[_ngcontent-wpl-c49] > .form-select[_ngcontent-wpl-c49] ~ label[_ngcontent-wpl-c49] {
+      opacity: 1;
+    }
+    #pass-view[_ngcontent-wpl-c49] {
+      margin-left: 94%;
+      margin-top: -19px;
+      display: inline-block;
+      position: absolute;
+      top: 45px;
+    }
+    #pass-view.pass-visble[_ngcontent-wpl-c49]   i[_ngcontent-wpl-c49]:before{
+      content: "\f070";
+    }
+    .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49]:focus, .form-floating[_ngcontent-wpl-c49] > .form-control[_ngcontent-wpl-c49]:not(:placeholder-shown) {
+      padding-top: 1.625rem;
+      padding-bottom: 0;
+    }
+    @media (min-width: 1024px){
+      .login-bg[_ngcontent-wpl-c49]   .container[_ngcontent-wpl-c49]{
+        width: 1000px;
+      }
+    }
+    @media (max-width: 768px){
+      .login-container[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]:before{
+        width: 100%;
+        height: 120%;
+      }
+      .login-container[_ngcontent-wpl-c49]   .row[_ngcontent-wpl-c49]{
+        box-shadow:unset;
+      }
+    }</style><style>
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJsb2dpbi5jb21wb25lbnQuY3NzIn0= */</style><style>html[_ngcontent-wpl-c50], body[_ngcontent-wpl-c50] {
+      height: 100%;
+      font-family:Poppins;
+    }
+
+    
+    .login-bg[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]{
+      min-height: 80vh;
+    }
+    .form-signin[_ngcontent-wpl-c50]   .checkbox[_ngcontent-wpl-c50] {
+      font-weight: 400;
+    }
+    .form-signin[_ngcontent-wpl-c50]   h1[_ngcontent-wpl-c50]{
+      font-size: 25px;
+      font-weight: 600 !important;
+    }
+    .login-form[_ngcontent-wpl-c50] {
+      
+      
+      min-height: 30vh;
+      border-radius: 10px;
+    }
+    .side-image[_ngcontent-wpl-c50]{
+      background: url('../assets/img/Group 278.svg');
+      min-height: 400px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+    }
+    .form-signin[_ngcontent-wpl-c50]   .form-floating[_ngcontent-wpl-c50]:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin[_ngcontent-wpl-c50]   input[type="email"][_ngcontent-wpl-c50] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin[_ngcontent-wpl-c50]   input[type="password"][_ngcontent-wpl-c50] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .form-floating[_ngcontent-wpl-c50] {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50] {
+      border: none;
+      border-radius: 0;
+      border-bottom: 1px solid #121212;
+      background: unset;
+    }
+    .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50]:focus{
+      box-shadow: unset;
+      border-bottom: 2px solid #39126d !important;
+    }
+    .btn[_ngcontent-wpl-c50]{
+      font-weight: 500;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .btn[_ngcontent-wpl-c50]:focus{
+      box-shadow: unset;
+    }
+    .login-bg[_ngcontent-wpl-c50]{
+      background: #4c1f8c;
+      height: 100%;
+      padding-top: 10vh;
+      position: relative;
+    }
+    .login-bg[_ngcontent-wpl-c50]:before{
+      background: url(../assets/img/david-marioni-F_lns58a_ec-unsplash.JPG);
+      position: absolute;
+      height: 100%;
+      content: '';
+      width: 100%;
+      top: 0;
+      opacity: 0.1;
+      background-size: 23px;
+      filter: invert(1);
+    }
+    .login-container[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]{
+      background: #fff url('../assets/img/bg-pattern.svg');
+      height: 400px;
+      border-radius: 15px;
+      position: relative;
+      z-index: 2;
+      background-size: 100% 100%;
+      background-position: 313px;
+      box-shadow: 0 1rem 2rem -0.75rem rgb(57 18 109), 0 -11px 2rem -0.75rem rgb(57 18 109);
+    }
+    .login-container[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]:after{
+      content: '';
+      background-color: #fff;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      opacity: 0.9;
+    }
+    .login-container[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]:before{
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      right: 0;
+      bottom: 0;
+      background-color: #e8ddff;
+      z-index: -1;
+      border-top-left-radius: 10%;
+      border-bottom-left-radius: 10%;
+    }
+    button.btn-info.btn.sign-in-btn[_ngcontent-wpl-c50]{
+      color: #fff;
+      background-color: #39126d;
+      border-color: #39126d;
+      border-radius: 109px !important;
+      opacity: 1;
+      margin-top: 15px;
+    }
+    .login-container[_ngcontent-wpl-c50]   a[_ngcontent-wpl-c50]{
+      color: #39126d;
+      transition: all 0.3s ease;
+    }
+    .login-container[_ngcontent-wpl-c50]   a[_ngcontent-wpl-c50]:hover{
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #39126d;
+    }
+    .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50]:focus ~ label[_ngcontent-wpl-c50], .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50]:not(:placeholder-shown) ~ label[_ngcontent-wpl-c50], .form-floating[_ngcontent-wpl-c50] > .form-select[_ngcontent-wpl-c50] ~ label[_ngcontent-wpl-c50] {
+      opacity: 1;
+    }
+    #pass-view[_ngcontent-wpl-c50] {
+      margin-left: 94%;
+      margin-top: -19px;
+      display: inline-block;
+      position: absolute;
+      top: 45px;
+    }
+    #pass-view.pass-visble[_ngcontent-wpl-c50]   i[_ngcontent-wpl-c50]:before{
+      content: "\f070";
+    }
+    .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50]:focus, .form-floating[_ngcontent-wpl-c50] > .form-control[_ngcontent-wpl-c50]:not(:placeholder-shown) {
+      padding-top: 1.625rem;
+      padding-bottom: 0;
+    }
+    @media (min-width: 1024px){
+      .login-bg[_ngcontent-wpl-c50]   .container[_ngcontent-wpl-c50]{
+        width: 1000px;
+      }
+    }
+    @media (max-width: 768px){
+      .login-container[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]:before{
+        width: 100%;
+        height: 120%;
+      }
+      .login-container[_ngcontent-wpl-c50]   .row[_ngcontent-wpl-c50]{
+        box-shadow:unset;
+      }
+    }</style></head>
+<body>
+  <app-root _nghost-wpl-c47="" ng-version="11.0.4"><div _ngcontent-wpl-c47=""><nav _ngcontent-wpl-c47="" class="navbar navbar-expand navbar-dark bg-dark"><ul _ngcontent-wpl-c47="" routerlinkactive="active" class="navbar-nav mr-auto" ng-reflect-router-link-active="active"><li _ngcontent-wpl-c47="" class="nav-item"><a _ngcontent-wpl-c47="" href="http://localhost:4200/#/home" routerlink="home" class="nav-link" ng-reflect-router-link="home">Home </a></li></ul><ul _ngcontent-wpl-c47="" class="navbar-nav ml-auto"><li _ngcontent-wpl-c47="" class="nav-item"><a _ngcontent-wpl-c47="" href="http://localhost:4200/#/signup" routerlink="signup" class="nav-link" ng-reflect-router-link="signup">Sign Up</a></li><li _ngcontent-wpl-c47="" class="nav-item"><a _ngcontent-wpl-c47="" href="http://localhost:4200/#/login" routerlink="login" class="nav-link" ng-reflect-router-link="login">Login</a></li></ul></nav></div><!--bindings={
+  "ng-reflect-ng-if": "true"
+}--><router-outlet _ngcontent-wpl-c47=""></router-outlet><app-login _nghost-wpl-c50="">
+<!-- saved from url=(0029)http://localhost:4200/#/login -->
+<html _ngcontent-wpl-c50=""><head _ngcontent-wpl-c50=""><meta _ngcontent-wpl-c50="" name="viewport" content="width=device-width, initial-scale=1"><title _ngcontent-wpl-c50=""></title></head><body _ngcontent-wpl-c50=""><section _ngcontent-wpl-c50="" class="login-bg"><div _ngcontent-wpl-c50="" class="container"><div _ngcontent-wpl-c50="" class="login-container"><div _ngcontent-wpl-c50="" class="row align-items-center"><div _ngcontent-wpl-c50="" class="col-md-7 col-sm-6"><div _ngcontent-wpl-c50="" class="side-image"></div></div><div _ngcontent-wpl-c50="" class="col-md-5 col-sm-6"><div _ngcontent-wpl-c50="" class="login-form"><main _ngcontent-wpl-c50="" class="form-signin px-5"><form _ngcontent-wpl-c50="" novalidate="" class="ng-untouched ng-pristine ng-valid"><img _ngcontent-wpl-c50="" alt="" src="./Light Bootstrap Dashboard by Creative Tim_files/ktech-logo.jfif" width="250" height="60" class="mb-4 mx-auto my-3 d-block"><h1 _ngcontent-wpl-c50="" class="h3 mb-3 fw-normal text-center">Login</h1><div _ngcontent-wpl-c50="" class="form-floating"><input _ngcontent-wpl-c50="" type="email" id="floatingInput" placeholder="name@example.com" class="form-control"><label _ngcontent-wpl-c50="" for="floatingInput"><svg _ngcontent-wpl-c50="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 101.059 101.314"><path _ngcontent-wpl-c50="" id="arroba" d="M101.033,44.049a50.508,50.508,0,1,0-56.718,57.223,52.308,52.308,0,0,0,6.776.443,50.007,50.007,0,0,0,25.97-7.222,4.887,4.887,0,0,0-5.043-8.372,40.733,40.733,0,1,1,17.5-21.569,7.056,7.056,0,0,1-6.773,4.58,7.291,7.291,0,0,1-7.281-7.281V31.67a4.886,4.886,0,1,0-9.773,0v.046a24.432,24.432,0,1,0,1.762,37.537,17.018,17.018,0,0,0,15.291,9.652A16.832,16.832,0,0,0,98.756,67.751a50.607,50.607,0,0,0,2.277-23.7Zm-50,21.826A14.659,14.659,0,1,1,65.694,51.216,14.659,14.659,0,0,1,51.035,65.875Z" transform="translate(-0.481 -0.401)"></path></svg>&nbsp; Email address</label></div><div _ngcontent-wpl-c50="" class="form-floating"><input _ngcontent-wpl-c50="" type="password" id="floatingPassword" placeholder="Password" class="form-control"><label _ngcontent-wpl-c50="" for="floatingPassword"><svg _ngcontent-wpl-c50="" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 242.25 304"><g _ngcontent-wpl-c50="" id="padlock" transform="translate(-52)"><g _ngcontent-wpl-c50="" id="Group_548" data-name="Group 548" transform="translate(52)"><g _ngcontent-wpl-c50="" id="Group_547" data-name="Group 547"><path _ngcontent-wpl-c50="" id="Path_969" data-name="Path 969" d="M258.625,111.625h-21.4V62.8C237.228,28.172,208.461,0,173.1,0s-64.125,28.172-64.125,62.8v48.824H87.625A35.665,35.665,0,0,0,52,147.25V268.375A35.665,35.665,0,0,0,87.625,304h171a35.665,35.665,0,0,0,35.625-35.625V147.25A35.665,35.665,0,0,0,258.625,111.625ZM132.728,62.8c0-21.533,18.112-39.051,40.375-39.051S213.478,41.268,213.478,62.8v48.824h-80.75ZM270.5,268.375a11.888,11.888,0,0,1-11.875,11.875h-171A11.888,11.888,0,0,1,75.75,268.375V147.25a11.888,11.888,0,0,1,11.875-11.875h171A11.888,11.888,0,0,1,270.5,147.25Z" transform="translate(-52)"></path></g></g><g _ngcontent-wpl-c50="" id="Group_550" data-name="Group 550" transform="translate(151.156 169.812)"><g _ngcontent-wpl-c50="" id="Group_549" data-name="Group 549"><path _ngcontent-wpl-c50="" id="Path_970" data-name="Path 970" d="M240.969,286a21.966,21.966,0,0,0-11.9,40.433V352.5a11.875,11.875,0,0,0,23.75,0V326.461A21.966,21.966,0,0,0,240.969,286Z" transform="translate(-219 -286)"></path></g></g></g></svg> &nbsp;Password</label><span _ngcontent-wpl-c50="" id="pass-view" onclick="myFunction()"><i _ngcontent-wpl-c50="" class="fa-solid fa-eye"></i></span></div><div _ngcontent-wpl-c50="" class="checkbox mb-3"><label _ngcontent-wpl-c50=""><input _ngcontent-wpl-c50="" type="checkbox" value="remember-me"> Remember me </label></div><button _ngcontent-wpl-c50="" type="submit" class="w-100 btn btn-lg btn-info sign-in-btn">Sign in <span _ngcontent-wpl-c50=""> &nbsp;<svg _ngcontent-wpl-c50="" xmlns="http://www.w3.org/2000/svg" fill="#fff" width="25" height="20" viewBox="0 0 496.091 521.349"><g _ngcontent-wpl-c50="" id="Group_546" data-name="Group 546" transform="translate(-577.991 -606)"><path _ngcontent-wpl-c50="" id="refer" d="M403.777,147.918C403.777,66.355,337.418,0,255.859,0S107.941,66.355,107.941,147.918a147.87,147.87,0,0,0,64.223,121.895A256.26,256.26,0,0,0,0,511.715s-1.044,9.336,18.76,9.628,21.217-9.628,21.217-9.628c0-119.035,96.844-215.879,215.883-215.879,81.559,0,147.918-66.355,147.918-147.918ZM255.859,255.859A107.941,107.941,0,1,1,363.8,147.918,108.063,108.063,0,0,1,255.859,255.859ZM496.065,362.548c1.256,21.253-71.593,96.6-78.155,99.339s-15.623-.639-22.69-7.706-8.038-16.676-5.579-20.564,46.832-46.832,46.832-46.832H401.8a87.058,87.058,0,0,0-86.941,86.871s.709,36.443-.035,38.074-9.177,8.968-21.068,9.14a22.543,22.543,0,0,1-18.909-9.171c-1.035-1.505.031-38.078.031-38.078.059-69.926,57-126.816,126.922-126.816h32.672S392,304.759,389.641,301.973s-1.062-13.156,6.005-20.223,16.825-11.42,22.264-8.043S494.809,341.3,496.065,362.548Zm0,0" transform="translate(578 606)"></path></g></svg></span></button><p _ngcontent-wpl-c50="" class="pt-5 pb-3 text-center text-dark">Forgot <a _ngcontent-wpl-c50="" href="http://localhost:4200/#">Password?</a></p></form></main></div></div></div></div></div></section></body></html></app-login><!--container--></app-root>
+<script src="./Light Bootstrap Dashboard by Creative Tim_files/runtime.js.download" type="module"></script><script src="./Light Bootstrap Dashboard by Creative Tim_files/polyfills.js.download" type="module"></script><script src="./Light Bootstrap Dashboard by Creative Tim_files/styles.js.download" type="module"></script><script src="./Light Bootstrap Dashboard by Creative Tim_files/scripts.js.download" defer=""></script><script src="./Light Bootstrap Dashboard by Creative Tim_files/vendor.js.download" type="module"></script><script src="./Light Bootstrap Dashboard by Creative Tim_files/main.js.download" type="module"></script>
+
+
+</body></html>

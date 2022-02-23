@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { Properties } from '../properties';
 
@@ -8,9 +8,7 @@ import { Properties } from '../properties';
   styleUrls: ['./health-profile.component.css']
 })
 export class HealthProfileComponent implements OnInit {
-
-  constructor(private http: HttpClient,
-              private properties : Properties,) { }
+  selectedDate : any;
 
   ngOnInit(): void {
     // this.submitHealthDetails(); // todo: change logic
