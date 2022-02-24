@@ -58,12 +58,11 @@
                                 <div class="col-md-4">
                                       <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control" id="gender">
-                                            <option *ngFor="let industry of industries"  [ngValue]="industry.id">{{industry.id}} </option>  
-                                          <!-- <option>Select </option>
-                                          <option>Male</option>
-                                          <option>Female</option>
-                                          <option>Others</option>                                        -->
+                                        <select class="form-control" id="gender" [(ngModel)]="user.gender">
+                                           <option >Select </option>
+                                          <option value = "male">Male</option>
+                                          <option value = "female">Female</option>
+                                          <option value = "Others">Others</option>                                        
                                         </select>
                                       </div>
                                 </div>

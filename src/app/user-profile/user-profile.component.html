@@ -7,7 +7,7 @@
                         <h4 class="title">Edit Profile</h4>
                     </div>
                     <div class="content">
-                        <form #userForm="ngForm" (ngSubmit)="updateUserProfile(userForm, $event)" autocomplete="off" id="userForm"  role="form" name="userForm" novalidate>
+                        <form #userForm="ngForm" (ngSubmit)="updateUserProfile(userForm)" autocomplete="off" id="userForm"  role="form" name="userForm" novalidate>
                             <div class="row">
                                 <!-- <div class="col-md-5">
                                     <div class="form-group">
@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label for="firstName">First Name</label>
                                         <!-- <input type="text" class="form-control" placeholder="Username" value="priyanka"> -->
-                                        <input id="firstName" type="text" name="firstName" class="form-control" [(ngModel)]="user.firstName" #firstName="ngModel" placeholder="First Name">
+                                        <input id="firstName" type="text" name="firstName" class="form-control" [(ngModel)]="user.firstName"  (ngModelChange)="change(firstName)"  #firstName placeholder="First Name">
                                     </div>
                                 </div>
 
@@ -27,14 +27,14 @@
                                     <div class="form-group">
                                         <label for="lastname">Last Name </label>
                                         <!-- <input type="text" class="form-control" placeholder="Username" value="priyanka"> -->
-                                        <input id="lastName" type="text" name="lastName" class="form-control" [(ngModel)]="user.lastName" #lastName="ngModel" placeholder="Last Name">
+                                        <input id="lastName" type="text" name="lastName" class="form-control" [(ngModel)]="user.lastName" (ngModelChange)="change(lastName)"   #lastName placeholder="Last Name">
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="email">Email address</label>
-                                        <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email" #email="ngModel" disabled placeholder="Email">
+                                        <input id="email" type="email" name="email" class="form-control" [(ngModel)]="user.email"  #email disabled placeholder="Email">
 
                                         <!-- <input type="email" class="form-control" disabled placeholder="Email" value ="priyanka@gmail.com"> -->
                                     </div>
@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for = "address">Address</label>
-                                        <input id="address" type="text" name="address" class="form-control" [(ngModel)]="user.address" #address="ngModel"  placeholder="Address">
+                                        <input id="address" type="text" name="address" class="form-control" [(ngModel)]="user.address" (ngModelChange)="change(address)" #address  placeholder="Address">
 
                                         <!-- <input id = "" type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"> -->
                                     </div>

@@ -15,7 +15,7 @@ export class UserProfileComponent  implements OnInit {
     private properties : Properties,) { }
     userDeatils;
     user : any = {};
-   
+    userValue: any = {};
     userForm: FormGroup;
     ngOnInit(): void {
       this.UserDetails();
@@ -36,15 +36,25 @@ export class UserProfileComponent  implements OnInit {
 
   }
 
-  updateUserProfile(user:NgForm, event){
-    //alert(JSON.stringify(this.user));
+  updateUserProfile(user:NgForm){
+    console.log(JSON.stringify(this.userValue));
     
-     this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], this.user).subscribe(data => {
-       alert(JSON.stringify(data));
+     this.http.put(this.properties.API_ENDPOINT + '/users/'+this.user['id'], this.userValue).subscribe(data => {
+      // alert(JSON.stringify(data));
    }, error => {
      console.log("health profile error");
    });
   
   
+  }
+  change(value){
+    
+    let keyName = value.name;
+    let valueObj = value.value;
+   
+   // userValue.
+  //  Object.assign(this.userValue, {value.name : valueObj});
+    this.userValue=  Object.assign(this.userValue, {keyName: valueObj});
+   console.log(JSON.stringify(this.userValue))
   }
 }

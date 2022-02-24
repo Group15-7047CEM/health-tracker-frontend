@@ -33,6 +33,7 @@ export class HealthProfileComponent implements OnInit {
   }
     
   submitHealthDetails(healthForm:NgForm){
+    console.log(JSON.stringify(this.user));
     this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], this.user).subscribe(data => {
       alert(JSON.stringify(data));
   }, error => {

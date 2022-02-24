@@ -41,29 +41,29 @@
           <!-- feet -->
             <div class="col-xs-6 col-md-4"><div class="input-group">
              <span class="input-group-addon" id="sizing-addon2" >Feet</span>
-              <input type="text" NAME="feet" class="form-control" aria-describedby="sizing-addon2" VALUE=""  (keyup)="convert()">
+              <input type="text" NAME="feet" class="form-control" aria-describedby="sizing-addon2" VALUE="" [(ngModel)] = "feets"  (keyup)="convert()">
         </div></div>
           <!-- inches -->  
             <div class="col-xs-6 col-md-4"><div class="input-group">
             <span class="input-group-addon" id="sizing-addon2">Inches</span>
-            <input type="text" NAME="inches" class="form-control" aria-describedby="sizing-addon2"  VALUE="" (keyup)="convert()">
+            <input type="text" NAME="inches" class="form-control" aria-describedby="sizing-addon2"  VALUE=""  [(ngModel)] = "Inches" (keyup)="convert()">
         </div></div>
           <!-- centimeter -->
             <div class="col-xs-6 col-md-4"><div class="input-group">
            <span class="input-group-addon" id="sizing-addon2">cm</span>
-           <input type="text" id="cm" class="form-control" aria-describedby="sizing-addon2" #myNameFeetElem>
+           <input type="text" id="cm" class="form-control" aria-describedby="sizing-addon2" [(ngModel)] = "cms" #myNameFeetElem>
         </div></div>
           </div>      
           <div class="row">
           <!-- Pound -->
             <div class="col-xs-6"><div class="input-group">
          <span class="input-group-addon" id="sizing-addon2">Pound</span>
-         <input type="text" NAME="pound" class="form-control" aria-describedby="sizing-addon2"  (keyup)="pkconvert()">
+         <input type="text" NAME="pound" class="form-control" aria-describedby="sizing-addon2" [(ngModel)] = "Pounds" (keyup)="pkconvert()">
       </div></div>
           <!-- Kilogram -->
             <div class="col-xs-6"><div class="input-group">
            <span class="input-group-addon" id="sizing-addon2">Kilogram</span>
-           <input type="text" ID="kg" class="form-control" aria-describedby="sizing-addon2">
+           <input type="text" ID="kg" class="form-control"  [(ngModel)] = "Kgs"  aria-describedby="sizing-addon2">
         </div></div>
             </div>
         
@@ -138,8 +138,8 @@
           <div class="row">
                  <div class="col-sm-16">
                 <div class="input-group">
-          <span class="input-group-addon" id="basic-addon1" (keyup)="check()">AGE</span>
-          <input type="text" class="form-control" (keyup)="check()" name="age"  aria-describedby="basic-addon1">
+          <span class="input-group-addon" id="basic-addon1"  >AGE</span>
+          <input type="text" class="form-control"  [(ngModel)] = "Ages" (keyup)="check()" name="age"  aria-describedby="basic-addon1">
         </div>
                  </div>
             </div>
@@ -149,12 +149,12 @@
                <div class="col-xs-6 col-md-4"><b class="size">Gender</b></div>
             <div class="col-xs-6 col-md-4"><div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios" id="male"  (keyup)="check()" value="option1" checked> Male
+            <input type="radio" class="form-check-input" name="optionsRadios" id="male"  [(ngModel)] = "Males" (keyup)="check()" value="option1" checked> Male
             </label>
           </div></div>
             <div class="col-xs-6 col-md-4"><div class="form-check">
             <label class="form-check-label">
-            <input type="radio" class="form-check-input" name="optionsRadios"  (keyup)="check()" id="female" value="option2"> Female
+            <input type="radio" class="form-check-input" name="optionsRadios"  [(ngModel)] = "Females" (keyup)="check()" id="female" value="option2"> Female
             </label>
           </div></div>
              </fieldset>
@@ -163,8 +163,8 @@
            <div class="row">
                  <div class="col-sm-16">
                  <div class="input-group">
-    <span class="input-group-addon" id="basic-addon1" (keyup)="check()">BMI</span>
-    <input type="text" class="form-control" name="bmi" (keyup)="check()" aria-describedby="basic-addon1">
+    <span class="input-group-addon" id="basic-addon1" >BMI</span>
+    <input type="text" class="form-control" name="bmi"  [(ngModel)] = "BMIS" (keyup)="check()" aria-describedby="basic-addon1">
   </div>
                  </div>
             </div>
@@ -173,7 +173,7 @@
                  <div class="col-sm-16">
                  <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">Your Fat % is </span>
-          <input type="text" class="form-control" id="fat"  aria-describedby="basic-addon1">
+          <input type="text" class="form-control" id="fat"  [(ngModel)] = "Fats" aria-describedby="basic-addon1">
         </div>
                  </div>
             </div> 
