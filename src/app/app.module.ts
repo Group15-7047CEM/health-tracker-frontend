@@ -6,6 +6,7 @@ import { IdentityService } from './auth/identity.service';
 import { Properties } from './properties';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppRoutingModule } from './app.routing';
 import { NavbarModule } from './shared/navbar/navbar.module';
@@ -21,6 +22,7 @@ import { SleepComponent } from './sleep/sleep.component';
 import { StepsComponent } from './steps/steps.component';
 import { FoodComponent } from './food/food.component';
 import { HomeComponent } from './home/home.component';
+import { HealthProfileComponent } from './health-profile/health-profile.component';
 
 
 
@@ -31,6 +33,8 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    BsDatepickerModule.forRoot(),
+    DatepickerModule.forRoot(),
     RouterModule,
     HttpClientModule,
     NavbarModule,
@@ -49,8 +53,12 @@ import { HomeComponent } from './home/home.component';
     SleepComponent,
     StepsComponent,
     FoodComponent,
-    HomeComponent
+    HomeComponent,
+    HealthProfileComponent
   ],
+  exports: [
+    BsDatepickerModule,
+   ],
   providers: [
     Properties,
     IdentityService,

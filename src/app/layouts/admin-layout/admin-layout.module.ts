@@ -16,7 +16,7 @@ import { MapsComponent } from '../../maps/maps.component';
 // import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CalculatorComponent } from '../../calculator/calculator.component';
-import { HealthProfileComponent } from '../../health-profile/health-profile.component';
+//import { HealthProfileComponent } from '../../health-profile/health-profile.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
 import { LogComponent } from '../../log/log.component';
 import { GoalsComponent } from '../../goals/goals.component';
@@ -40,7 +40,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
     MapsComponent,
     DashboardComponent,
     UpgradeComponent,
-    HealthProfileComponent,
+    //HealthProfileComponent,
     UserProfileComponent,
     GoalsComponent,
     LogComponent

@@ -10,6 +10,9 @@ import { NgForm } from '@angular/forms';
 })
 export class HealthProfileComponent implements OnInit {
 
+  myDateValue: Date;
+
+
   constructor(private http: HttpClient,
               private properties : Properties,) { }
 
@@ -17,8 +20,15 @@ export class HealthProfileComponent implements OnInit {
   healthForm: FormGroup;
   industries = [{id:"Male"},{id:"Female"},{id:"Others"}];          
   ngOnInit(): void {
+    this.myDateValue = new Date();
     this.healthDetails();
   }
+
+  
+  onDateChange(newDate: Date) {
+    console.log("new Date=============" + newDate);
+  }
+
 
   healthDetails () {
     this.http.get(this.properties.API_ENDPOINT + '/users/profile')
