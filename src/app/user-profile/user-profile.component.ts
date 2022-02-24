@@ -37,16 +37,15 @@ export class UserProfileComponent  implements OnInit {
   }
 
   updateUserProfile(user:NgForm){
-    console.log(JSON.stringify(this.userValue));
-    
-     this.http.put(this.properties.API_ENDPOINT + '/users/'+this.user['id'], this.userValue).subscribe(data => {
-      // alert(JSON.stringify(data));
-   }, error => {
-     console.log("health profile error");
-   });
-  
-  
+    const changedValues = this.getDirtyValues(user);
+    this.http.put(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
+      .subscribe(data => {
+        this.UserDetails();
+      }, error => {
+        console.log("health profile error");
+      });
   }
+
   change(value){
     
     let keyName = value.name;
@@ -57,4 +56,22 @@ export class UserProfileComponent  implements OnInit {
     this.userValue=  Object.assign(this.userValue, {keyName: valueObj});
    console.log(JSON.stringify(this.userValue))
   }
+
+
+  getDirtyValues(form: any) {
+    let dirtyValues = {};
+    Object.keys(form.controls)
+        .forEach(key => {
+            let currentControl = form.controls[key];
+
+            if (currentControl.dirty) {
+                if (currentControl.controls)
+                    dirtyValues[key] = this.getDirtyValues(currentControl);
+                else
+                    dirtyValues[key] = currentControl.value;
+            }
+        });
+    return dirtyValues;
+  }
+
 }
