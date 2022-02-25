@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { Properties } from '../properties';
 
-import { FormBuilder, FormGroup, Validators , FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators , NgForm,ReactiveFormsModule} from '@angular/forms';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -16,6 +16,8 @@ export class WaterComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+  user : any = {};
+  waterRecord;
 
   chartOption: EChartsOption = {};
   readings: any[] = [];
@@ -50,9 +52,8 @@ export class WaterComponent implements OnInit {
 }
 
   async getWaterReadings () {
-    this.http.get(this.properties.API_ENDPOINT + '/health-tracking/water?startDate=2022-01-01&endDate=2022-03-30')
+    this.http.get(this.properties.API_ENDPOINT + '/health-tracking/water?startDate=2022-01-01&endDate=2022-04-30')
       .subscribe((waterReadings: any) => {
-        // alert(JSON.stringify(waterReadings));
         const readings = waterReadings.data.waterReadings.reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
@@ -69,7 +70,6 @@ export class WaterComponent implements OnInit {
 get f() { return this.registerForm.controls; }
 onSubmit() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
@@ -80,6 +80,18 @@ onSubmit() {
    
 }
 
+
+updateWater(user:NgForm){
+  console.log(JSON.stringify(this.user));
+  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/water/', this.user)
+    .subscribe(data => {
+      this.getWaterReadings ();
+    }, error => {
+      console.log("health profile error");
+    });
+    this.user = {};
+    this.hide();
+}
 
 onSelect(data): void {
   console.log('Item clicked', JSON.parse(JSON.stringify(data)));

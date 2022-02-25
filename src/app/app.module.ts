@@ -23,7 +23,7 @@ import { StepsComponent } from './steps/steps.component';
 import { FoodComponent } from './food/food.component';
 import { HomeComponent } from './home/home.component';
 import { HealthProfileComponent } from './health-profile/health-profile.component';
-
+import { DatePipe } from '@angular/common';
 
 
 
@@ -61,7 +61,7 @@ import { HealthProfileComponent } from './health-profile/health-profile.componen
    ],
   providers: [
     Properties,
-    IdentityService,
+    IdentityService,DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,

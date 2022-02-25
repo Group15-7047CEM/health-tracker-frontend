@@ -12,7 +12,7 @@
       <p>Recently logged sleep data</p>
     </div>
    
-    <button type="button" class="btn btn-primary pull-right" (click) = "show()">Log Sleep</button> 
+    <button type="button" class="btn btn-info btn-fill pull-right" (click) = "show()">Log Sleep</button> 
 
 
     <div class="tab-content" id="myTabContent">
@@ -28,34 +28,37 @@
         <h4 class="modal-title" id="myModalLabel">Log Sleep</h4>
       </div>
       <div class="modal-body">
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                      <div class="row">
+        <form #registerForm="ngForm" (ngSubmit)="updateSleep(registerForm)" autocomplete="off" id="registerForm"  role="form" name="registerForm" novalidate>  
+          <div class="row">
                        
                          <div class="col-sm-6">
                             <div class="form-group">
                                <label>Sleep Start Time</label>
-                               
-                               <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                               <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                                  <div *ngIf="f.email.errors.required">Email is required</div>
-                                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                               </div> -->
+                    
+                               <input id="sleepStartTime" type="text" name="sleepStartTime" class="form-control" [(ngModel)]="user.sleepStartTime" #sleepStartTime="ngModel" placeholder="sleepStartTime ">
+                            
                             </div>
                          </div>
                          <div class="col-sm-6">
                                <div class="form-group">
                                   <label>Sleep End Time</label>
-                                  <input type="text" formControlName="mobile" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }" />
-                                  <!-- <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
-                                     <div *ngIf="f.mobile.errors">Mobile must be Valid and at least 10 digits</div>
-                                    
-                                  </div> -->
+                                  <input id="sleepEndTime" type="text" name="sleepEndTime" class="form-control" [(ngModel)]="user.sleepEndTime" #sleepEndTime="ngModel" placeholder="sleepEndTime ">
+                                
                                </div>
                             </div>
+
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                 <label>Tracked Date</label>
+                                 <input id="trackedDate" type="text" name="trackedDate" class="form-control" [(ngModel)]="user.trackedDate" #trackedDate="ngModel" placeholder="trackedDate ">
+      
+                               
+                              </div>
+                           </div>
                         
              </div>
-             <button type="submit" class="btn btn-primary">Save</button>
-             <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Cancel</button>
+             <button type="submit" class="btn btn-info btn-fill ">Save</button>
+             <button type="button" class="btn btn-info btn-primary " data-dismiss="modal" (click) = "hide()">Cancel</button>
 
                 </form>
      

@@ -3,6 +3,8 @@ import { HttpClient} from "@angular/common/http";
 import { Properties } from '../properties';
 import {FormGroup} from '@angular/forms';
 import { NgForm } from '@angular/forms';
+import { DatePipe } from '@angular/common'
+
 
 @Component({
   selector: 'app-health-profile',
@@ -19,13 +21,15 @@ export class HealthProfileComponent implements OnInit {
   height;
   weight;
   BMI;
+  date;
+  changedValues
   constructor(private http: HttpClient,
-              private properties : Properties) { }
+              private properties : Properties,public datepipe: DatePipe) { }
 
   user : any = {};
   healthForm: FormGroup;
   updatedDate;
-  date;
+ 
   industries = [{id:"Male"},{id:"Female"},{id:"Others"}];          
   ngOnInit(): void {
     this.myDateValue = new Date();
@@ -34,10 +38,10 @@ export class HealthProfileComponent implements OnInit {
 
   
   onDateChange(newDate: Date) {
-   // this.updatedDate = newDate.value;
-   
-    //let latest_date =this.datepipe.transform(newDate, 'yyyy-MM-dd');
-    console.log("new Date=============" + this.myDateValue);
+   // this.date=new Date();
+    this.updatedDate =this.datepipe.transform(newDate, 'yyyy-MM-dd');
+    
+    console.log("called====="+ this.updatedDate);
   }
 
 
@@ -84,7 +88,7 @@ export class HealthProfileComponent implements OnInit {
   
 
   updateUserProfile(user:NgForm){
-    user["dob"] = this.myDateValue;
+    console.log("this.updatedDate===="+this.updatedDate);
     const changedValues = this.getDirtyValues(user);
     console.log("cahngedvalues============="+ JSON.stringify(changedValues));
 

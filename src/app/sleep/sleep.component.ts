@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { FormBuilder, FormGroup, Validators , FormsModule,ReactiveFormsModule} from '@angular/forms';
-
+import { HttpClient } from "@angular/common/http";
+import { FormBuilder, FormGroup, Validators, NgForm,ReactiveFormsModule} from '@angular/forms';
+import { Properties } from '../properties';
 @Component({
   selector: 'app-sleep',
   templateUrl: './sleep.component.html',
@@ -13,7 +13,8 @@ export class SleepComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { }
+  user: any ={};
+  constructor(private formBuilder: FormBuilder, private http: HttpClient,private properties: Properties,) { }
   show()
   {
     this.showModal = true; // Show-Hide Modal Check
@@ -47,5 +48,15 @@ onSubmit() {
    
 }
 
+
+updateSleep(user:NgForm){
+  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/sleep/', this.user)
+    .subscribe(data => {
+    }, error => {
+      console.log("health profile error");
+    });
+    this.user = {};
+    this.hide();
+}
 
 }

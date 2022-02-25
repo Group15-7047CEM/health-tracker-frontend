@@ -16,7 +16,7 @@
     <p>Recently logged glasses</p>
   </div>
 
-  <button type="button" class="btn btn-primary pull-right" (click)="show()">Log Water</button>
+  <button type="button" class="btn btn-info btn-fill pull-right" (click)="show()">Log Water</button>
 
   
 
@@ -35,45 +35,51 @@
           <h4 class="modal-title" id="myModalLabel">Log Water</h4>
         </div>
         <div class="modal-body">
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
+            <form #registerForm="ngForm" (ngSubmit)="updateWater(registerForm)" autocomplete="off" id="registerForm"  role="form" name="registerForm" novalidate>
+
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
                   <label>Select Date</label>
-                  <input type="text" formControlName="firstname" class="form-control"
-                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" />
+                  <input id="trackedDate" type="text" name="trackedDate" class="form-control" [(ngModel)]="user.trackedDate" #trackedDate="ngModel" placeholder="trackedDate ">
+
+                  <!-- <input type="text" formControlName="firstname" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" /> -->
                   <!-- <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
                                         <div *ngIf="f.firstname.errors.required">FirstName is required</div>
                                   </div> -->
                 </div>
               </div>
-              <div class="col-sm-6">
+              <!-- <div class="col-sm-6">
                 <div class="form-group">
                   <label>Select Time</label>
 
                   <input type="text" formControlName="email" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                  <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                   <div *ngIf="f.email.errors.required">Email is required</div>
                                   <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                               </div> -->
+                               </div> 
                 </div>
-              </div>
+              </div> -->
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="exampleFormControlSelect1">Intake</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>Select </option>
-                    <option>1 Glass(250)ml</option>
-                    <option>1/2 Bottle(500)ml</option>
-                    <option>Bottle(1000#0ml</option>
-                  </select>
+                  <label for="waterIntake">Intake</label>
+                  <!-- <input id="waterIntake" type="num" name="waterIntake" class="form-control" [(ngModel)]="user.waterIntake" #waterIntake="ngModel" placeholder="waterIntake"> -->
+
+                   <select class="form-control" id="waterIntake"  [(ngModel)]="user.waterIntake" #waterIntake="ngModel" name="waterIntake" placeholder="waterIntake">
+                    <option [ngValue]="undefined" selected>Select</option>
+                    <option value = "250" >1 Glass(250)ml</option>
+                    <option value = "500">1/2 Bottle(500)ml</option>
+                    <option value = "1000">Bottle(1000)ml</option>
+                  </select> 
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
-            <button type="button" class="btn btn-dark" data-dismiss="modal" (click)="hide()">Cancel</button>
+            <button type="submit" class="btn btn-info btn-fill ">Save</button>
+            <button type="button" class="btn btn-info btn-primary " data-dismiss="modal" (click)="hide()">Cancel</button>
 
           </form>
 

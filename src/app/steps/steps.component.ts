@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Properties } from '../properties';
 
-import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -16,7 +16,7 @@ export class StepsComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-
+  user : any = {};
   chartOption: EChartsOption = {};
   readings: any[] = [];
 
@@ -74,5 +74,15 @@ export class StepsComponent implements OnInit {
 
   }
 
+
+  updateSteps(user:NgForm){
+    this.http.post(this.properties.API_ENDPOINT + '/health-tracking/steps/', this.user)
+      .subscribe(data => {
+      }, error => {
+        console.log("health profile error");
+      });
+      this.user = {};
+      this.hide();
+  }
 
 }
