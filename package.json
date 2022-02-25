@@ -1,6 +1,6 @@
 {
-    "name": "lbd-free-angular-cli",
-    "version": "1.7.0",
+    "name": "health-tracker-frontend",
+    "version": "1.0.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
@@ -11,7 +11,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-        "heroku-postbuild": "ng build —-configuration production"
+        "heroku-postbuild": "ng build health-tracker-frontend"
     },
     "private": true,
     "dependencies": {
