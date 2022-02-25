@@ -43,16 +43,34 @@ export class HealthProfileComponent implements OnInit {
   }
     
   submitHealthDetails(healthForm:NgForm){
-    console.log(JSON.stringify(this.user));
-    this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], this.user).subscribe(data => {
-      alert(JSON.stringify(data));
-  }, error => {
-    console.log("health profile error");
-  });
+    const changedValues = this.getDirtyValues(healthForm);
+    console.log({changedValues});
+    // this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
+    //   .subscribe(data => {
+    //       // alert(JSON.stringify(data));
+    //       this.healthDetails();
+    //   }, error => {
+    //     console.log("health profile error");
+    //   });
 
   }
 
   
+  getDirtyValues(form: any) {
+    let dirtyValues = {};
+    Object.keys(form.controls)
+        .forEach(key => {
+            let currentControl = form.controls[key];
+
+            if (currentControl.dirty) {
+                if (currentControl.controls)
+                    dirtyValues[key] = this.getDirtyValues(currentControl);
+                else
+                    dirtyValues[key] = currentControl.value;
+            }
+        });
+    return dirtyValues;
+  }
 
 
 
