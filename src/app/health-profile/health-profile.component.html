@@ -9,7 +9,7 @@
                         <h4 class="title">Health Status</h4>
                     </div>
                     <div class="content">
-                        <form #healthForm="ngForm" (ngSubmit)="submitHealthDetails(healthForm)" autocomplete="off" id="healthForm"  role="form" name="healthForm" novalidate>
+                        <form #healthForm="ngForm" (ngSubmit)="updateUserProfile(healthForm)" autocomplete="off" id="healthForm"  role="form" name="healthForm" novalidate>
                             <div class="row">
                                 <!-- <div class="col-md-5">
                                     <div class="form-group">
@@ -20,7 +20,7 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="currentWeight" >Weight</label>
-                                        <input id="currentWeight" type="text" name="currentWeight" class="form-control" [(ngModel)]="user.currentWeight" #currentWeight="ngModel" placeholder="Weight">
+                                        <input id="currentWeight" type="text" name="currentWeight" class="form-control" [(ngModel)]="user.currentWeight" #currentWeight="ngModel" placeholder="Weight" (keyup)="sum()">
                                         <!-- <input type="num" class="form-control" placeholder="weight" > -->
                                     </div>
                                 </div>                             
@@ -29,7 +29,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="height">Height in cms</label>
-                                        <input id="height" type="text" name="height" class="form-control" [(ngModel)]="user.height" #height="ngModel" placeholder="Height">
+                                        <input id="height" type="text" name="height" class="form-control" [(ngModel)]="user.height" #height="ngModel" placeholder="Height" (keyup)="sum()">
 
                                         <!-- <input type="num" class="form-control"  placeholder="Height in ft" > -->
                                     </div>
@@ -98,6 +98,28 @@
                 </div>
             </div>
            
+
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
+                    </div>
+                    <div class="content">
+                            <span class="input-group-addon" id="basic-addon1"> Your BMI is </span>
+                             <!-- <input type="text" class="form-control" id="result" name="result" aria-describedby="basic-addon1" [(ngModel)]= "BMI" #myNameElem>  -->
+                        
+                         <p class="description text-center"> {{20.56}} <br>
+                          
+                        </p> 
+                    </div>
+                    <hr>
+                    <!-- <div class="text-center">
+                        <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
+                        <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
+                    </div> -->
+                </div>
+            </div> 
         </div>
     </div>
   </div>
