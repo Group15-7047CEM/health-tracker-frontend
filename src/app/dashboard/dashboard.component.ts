@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { LegendItem, ChartType } from '../lbd/lbd-chart/lbd-chart.component';
-import * as Chartist from 'chartist';
+import * as allHealthTips from './health-tips.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,89 +23,223 @@ export class DashboardComponent implements OnInit {
   public activityChartOptions: any;
   public activityChartResponsive: any[];
   public activityChartLegendItems: LegendItem[];
-constructor() { }
 
-ngOnInit() {
-    this.emailChartType = ChartType.Pie;
-    this.emailChartData = {
-      labels: ['62%', '32%', '6%'],
-      series: [62, 32, 6]
+  dashboardData: any;
+  healthTips: string[];
+
+  myCaloriesChart = {};
+  caloriesBurntChart = {};
+  caloriesConsumedChart = {};
+
+  constructor() { }
+
+  ngOnInit() {
+    this.dashboardData = {
+      myCalories: [
+        {
+          trackedDate: '2022-02-13',
+          foodCalories: 2000,
+          stepsCalories: 3000
+        },
+        {
+          trackedDate: '2022-02-14',
+          foodCalories: 1000,
+          stepsCalories: 4000
+        },
+        {
+          trackedDate: '2022-02-15',
+          foodCalories: 1500,
+          stepsCalories: 2500
+        }
+      ],
+      caloriesBurntToday: 2000,
+      caloriesConsumedToday: 1500,
+      targetCalToBurn: 2555,
+      targetCalToConsume: 2400
     };
-    this.emailChartLegendItems = [
-      { title: 'Open', imageClass: 'fa fa-circle text-info' },
-      { title: 'Bounce', imageClass: 'fa fa-circle text-danger' },
-      { title: 'Unsubscribe', imageClass: 'fa fa-circle text-warning' }
-    ];
+    this.getDashboardData() // call api and subscribe, assign to dashboardData variable
+    this.getMyCaloriesOptions();
+    this.getCaloriesBurntOptions();
+    this.getCaloriesConsumedOptions();
+    this.showHealthTips();
+  }
 
-    this.hoursChartType = ChartType.Line;
-    this.hoursChartData = {
-      labels: ['9:00AM', '12:00AM', '3:00PM', '6:00PM', '9:00PM', '12:00PM', '3:00AM', '6:00AM'],
+  getDashboardData() {
+    // call api here
+  }
+
+  showHealthTips() {
+    console.log({aHt: allHealthTips})
+    // Shuffle array
+    const shuffled = allHealthTips.sort(() => 0.5 - Math.random());
+
+    // Get sub-array of first n elements after shuffled
+    let selected = shuffled.slice(0, 6);
+    this.healthTips = selected;
+    console.log({ht: this.healthTips})
+  }
+
+  getMyCaloriesOptions() {
+    const chartOptions = {
+      color: ['#FFDC61',
+      '#3398DB'
+      ],
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow',
+        },
+      },
+      legend: {
+        show: true,
+        top: 'top',
+        data: ['Food (cal intake)', 'Steps (cal burned)']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // updated by api
+          axisTick: {
+            alignWithLabel: true,
+          },
+        },
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: 'Calories'
+        },
+      ],
       series: [
-        [287, 385, 490, 492, 554, 586, 698, 695, 752, 788, 846, 944],
-        [67, 152, 143, 240, 287, 335, 435, 437, 539, 542, 544, 647],
-        [23, 113, 67, 108, 190, 239, 307, 308, 439, 410, 410, 509]
+        {
+          name: 'Food (cal intake)',
+          type: 'bar',
+          data: [10, 52, 200, 334, 390, 330, 220], // updated by api
+        },
+        {
+          name: 'Steps (cal burned)',
+          type: 'bar',
+          data: [52, 200, 334, 390, 330, 220, 10], // updated by api
+        },
+      ],
+    };
+    chartOptions['xAxis'][0].data = this.dashboardData.myCalories.map(c => c.trackedDate);
+    chartOptions['series'][0].data = this.dashboardData.myCalories.map(c => c.foodCalories);
+    chartOptions['series'][1].data = this.dashboardData.myCalories.map(c => c.stepsCalories);
+    this.myCaloriesChart = chartOptions;
+  }
+
+  getCaloriesBurntOptions() {
+    const chartOptions = {
+      color: ['#DF8879', '#C7C7C7'],
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '40',
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: 1048, name: 'Search Engine' },
+            { value: 735, name: 'Direct' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Union Ads' },
+            { value: 300, name: 'Video Ads' }
+          ]
+        }
       ]
     };
-    this.hoursChartOptions = {
-      low: 0,
-      high: 800,
-      showArea: true,
-      height: '245px',
-      axisX: {
-        showGrid: false,
+    chartOptions['series'][0].data = [ 
+      {
+        value: this.dashboardData.caloriesBurntToday,
+        name: 'Calories burnt'
       },
-      lineSmooth: Chartist.Interpolation.simple({
-        divisor: 3
-      }),
-      showLine: false,
-      showPoint: false,
-    };
-    this.hoursChartResponsive = [
-      ['screen and (max-width: 640px)', {
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
+      {
+        value: this.dashboardData.targetCalToBurn - this.dashboardData.caloriesBurntToday,
+        name: 'To burn'
+      }
     ];
-    this.hoursChartLegendItems = [
-      { title: 'Open', imageClass: 'fa fa-circle text-info' },
-      { title: 'Click', imageClass: 'fa fa-circle text-danger' },
-      { title: 'Click Second Time', imageClass: 'fa fa-circle text-warning' }
-    ];
+    this.caloriesBurntChart = chartOptions;
+  }
 
-    this.activityChartType = ChartType.Bar;
-    this.activityChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  getCaloriesConsumedOptions() {
+    const chartOptions = {
+      color: ['#8BB447', '#C7C7C7'],
+
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
       series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-        [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '40',
+              fontWeight: 'bold'
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: [
+            { value: 1048, name: 'Search Engine' },
+            { value: 735, name: 'Direct' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Union Ads' },
+            { value: 300, name: 'Video Ads' }
+          ]
+        }
       ]
     };
-    this.activityChartOptions = {
-      seriesBarDistance: 10,
-      axisX: {
-        showGrid: false
+    chartOptions['series'][0].data = [ 
+      {
+        value: this.dashboardData.caloriesConsumedToday,
+        name: 'Calories consumed'
       },
-      height: '245px'
-    };
-    this.activityChartResponsive = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value) {
-            return value[0];
-          }
-        }
-      }]
+      {
+        value: this.dashboardData.targetCalToConsume - this.dashboardData.caloriesConsumedToday,
+        name: 'To consume'
+      }
     ];
-    this.activityChartLegendItems = [
-      { title: 'Tesla Model S', imageClass: 'fa fa-circle text-info' },
-      { title: 'BMW 5 Series', imageClass: 'fa fa-circle text-danger' }
-    ];
-
-
+    this.caloriesConsumedChart = chartOptions;
   }
 
 }

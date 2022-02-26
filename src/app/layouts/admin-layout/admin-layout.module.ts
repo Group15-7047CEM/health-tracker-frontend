@@ -38,7 +38,7 @@ import { DashboardComponent } from '../../dashboard/dashboard.component';
     CalculatorComponent,
     IconsComponent,
     MapsComponent,
-    DashboardComponent,
+    // DashboardComponent,
     UpgradeComponent,
     //HealthProfileComponent,
     UserProfileComponent,
