@@ -29,7 +29,6 @@ import { WeightComponent } from './weight/weight.component';
 
 
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
