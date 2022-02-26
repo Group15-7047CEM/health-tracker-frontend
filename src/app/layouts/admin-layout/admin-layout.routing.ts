@@ -12,18 +12,19 @@ import { SleepComponent } from '../../sleep/sleep.component';
 import { StepsComponent } from '../../steps/steps.component';
 import { WaterComponent } from '../../water/water.component';
 import { FoodComponent } from '../../food/food.component';
+import { WeightComponent } from '../../weight/weight.component';
 
 
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user',           component: UserProfileComponent },
-    { path: 'health',         component: HealthProfileComponent },
-    { path: 'calculator',     component: CalculatorComponent },
-    { path: 'log',            component: LogComponent },
-    { path: 'water',           component: WaterComponent },
+    { path: 'dashboard',        component: DashboardComponent },
+    { path: 'user',             component: UserProfileComponent },
+    { path: 'health',           component: HealthProfileComponent },
+    { path: 'calculator',       component: CalculatorComponent },
+    { path: 'log',              component: LogComponent },
+    { path: 'water',            component: WaterComponent },
     { path: 'steps',            component: StepsComponent },
     { path: 'sleep',            component: SleepComponent },
-    { path: 'food',           component: FoodComponent },
-  
+    { path: 'food',             component: FoodComponent },
+    { path: 'weight',           component: WeightComponent },
 ];

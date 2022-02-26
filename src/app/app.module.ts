@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { HealthProfileComponent } from './health-profile/health-profile.component';
 import { DatePipe } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { WeightComponent } from './weight/weight.component';
 
 
 
@@ -56,7 +57,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FoodComponent,
     HomeComponent,
     HealthProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    WeightComponent
   ],
   exports: [
     BsDatepickerModule,

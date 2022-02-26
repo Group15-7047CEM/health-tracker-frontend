@@ -34,25 +34,49 @@
                          <div class="col-sm-6">
                             <div class="form-group">
                                <label>Sleep Start Time</label>
-                    
-                               <input id="sleepStartTime" type="text" name="sleepStartTime" class="form-control" [(ngModel)]="user.sleepStartTime" #sleepStartTime="ngModel" placeholder="sleepStartTime ">
+                               <input type="text"
+                               class="form-control"
+                               [minDate]="minDate"
+                               [maxDate]="maxDate"
+                               #dp="bsDatepicker"
+                               (bsValueChange)="onStartDateChange($event)"
+                               bsDatepicker [(bsValue)]="startDateValue"
+                              
+                               >
+                               <!-- <input id="sleepStartTime" type="text" name="sleepStartTime" class="form-control" [(ngModel)]="user.sleepStartTime" #sleepStartTime="ngModel" placeholder="sleepStartTime "> -->
                             
                             </div>
                          </div>
                          <div class="col-sm-6">
                                <div class="form-group">
                                   <label>Sleep End Time</label>
-                                  <input id="sleepEndTime" type="text" name="sleepEndTime" class="form-control" [(ngModel)]="user.sleepEndTime" #sleepEndTime="ngModel" placeholder="sleepEndTime ">
-                                
+                                  <!-- <input id="sleepEndTime" type="text" name="sleepEndTime" class="form-control" [(ngModel)]="user.sleepEndTime" #sleepEndTime="ngModel" placeholder="sleepEndTime "> -->
+                                  <input type="text"
+                                  class="form-control"
+                                  [minDate]="minDate"
+                                  [maxDate]="maxDate"
+                                  #dp="bsDatepicker"
+                                  (bsValueChange)="onEndDateChanges($event)"
+                                  bsDatepicker [(bsValue)]="endDateValue"
+                                 
+                                  >
                                </div>
                             </div>
 
                             <div class="col-sm-6">
                               <div class="form-group">
                                  <label>Tracked Date</label>
-                                 <input id="trackedDate" type="text" name="trackedDate" class="form-control" [(ngModel)]="user.trackedDate" #trackedDate="ngModel" placeholder="trackedDate ">
+                                 <!-- <input id="trackedDate" type="text" name="trackedDate" class="form-control" [(ngModel)]="user.trackedDate" #trackedDate="ngModel" placeholder="trackedDate "> -->
       
-                               
+                                 <input type="text"
+                                 class="form-control"
+                                 [minDate]="minDate"
+                                 [maxDate]="maxDate"
+                                 #dp="bsDatepicker"
+                                 (bsValueChange)="trackedChange($event)"
+                                 bsDatepicker [(bsValue)]="trackedDate"
+                                
+                                 >
                               </div>
                            </div>
                         

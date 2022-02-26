@@ -5,14 +5,15 @@ import { Properties } from '../properties';
 import { FormBuilder, FormGroup, Validators , NgForm,ReactiveFormsModule} from '@angular/forms';
 import { EChartsOption } from 'echarts';
 
-@Component({
-  selector: 'app-food',
-  templateUrl: './food.component.html',
-  styleUrls: ['./food.component.css']
-})
-export class FoodComponent implements OnInit {
 
-  foodForm : any = {};
+@Component({
+  selector: 'app-weight',
+  templateUrl: './weight.component.html',
+  styleUrls: ['./weight.component.css']
+})
+export class WeightComponent  implements OnInit {
+
+  weightForm : any = {};
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
@@ -45,22 +46,22 @@ export class FoodComponent implements OnInit {
     });
 
     // call water api
-    this.getFoodReadings();
+    this.getWeightReadings();
 
 }
 
-  async getFoodReadings () {
-    this.http.get(this.properties.API_ENDPOINT + '/health-tracking/food?startDate=2022-01-01&endDate=2022-03-30')
+  async getWeightReadings () {
+    this.http.get(this.properties.API_ENDPOINT + '/health-tracking/weight?startDate=2022-01-01&endDate=2022-03-30')
       .subscribe((foodReadings: any) => {
         const readings = foodReadings.data.foodReadings.reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
         chartOption['yAxis'] = {type: 'value'};
-        chartOption['series'] = [{ data: readings.map(w => w.totalCalories), type: 'line' }]
+        chartOption['series'] = [{ data: readings.map(w => w.weight), type: 'line' }]
         this.chartOption = chartOption;
         this.readings = readings;
     }, error => {
-      console.log("health profile error");
+      console.log("weight error");
     });
 
   }
@@ -80,14 +81,14 @@ onSubmit() {
 }
 
 
-updateFood(food:NgForm){
-  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/food/', this.foodForm)
+updateWeight(weight:NgForm){
+  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/weight/', this.weightForm)
     .subscribe(data => {
-        this.getFoodReadings();
+        this.getWeightReadings();
     }, error => {
-      console.log("health profile error");
+      console.log("weight profile error");
     });
-    this.foodForm = {};
+    this.weightForm = {};
     this.hide();
 }
 
