@@ -52,8 +52,8 @@ export class WeightComponent  implements OnInit {
 
   async getWeightReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/weight?startDate=2022-01-01&endDate=2022-03-30')
-      .subscribe((foodReadings: any) => {
-        const readings = foodReadings.data.foodReadings.reverse();
+      .subscribe((weightReadings: any) => {
+        const readings = weightReadings.data.weightReadings.reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
         chartOption['yAxis'] = {type: 'value'};
