@@ -53,13 +53,13 @@ export class WeightComponent  implements OnInit {
   async getWeightReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/weight?startDate=2022-01-01&endDate=2022-03-30')
       .subscribe((weightReadings: any) => {
-        const readings = weightReadings.data.weightReadings.reverse();
+        this.readings = weightReadings.data.weightReadings;
+        const readings = [...this.readings].reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
         chartOption['yAxis'] = {type: 'value'};
         chartOption['series'] = [{ data: readings.map(w => w.weight), type: 'line' }]
         this.chartOption = chartOption;
-        this.readings = readings;
     }, error => {
       console.log("weight error");
     });

@@ -52,13 +52,13 @@ export class FoodComponent implements OnInit {
   async getFoodReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/food?startDate=2022-01-01&endDate=2022-03-30')
       .subscribe((foodReadings: any) => {
-        const readings = foodReadings.data.foodReadings.reverse();
+        this.readings = foodReadings.data.foodReadings;
+        const readings = [...this.readings].reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
         chartOption['yAxis'] = {type: 'value'};
         chartOption['series'] = [{ data: readings.map(w => w.totalCalories), type: 'line' }]
         this.chartOption = chartOption;
-        this.readings = readings;
     }, error => {
       console.log("health profile error");
     });
