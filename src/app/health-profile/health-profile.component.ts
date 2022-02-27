@@ -13,7 +13,6 @@ import { DatePipe } from '@angular/common'
 })
 export class HealthProfileComponent implements OnInit {
 
-  myDateValue: Date;
   minDate;
   maxDate;
   num1;
@@ -22,7 +21,8 @@ export class HealthProfileComponent implements OnInit {
   weight;
   BMI;
   date;
-  changedValues
+  changedValues;
+  bsDateDOB;
   constructor(private http: HttpClient,
               private properties : Properties,public datepipe: DatePipe) { }
 
@@ -32,16 +32,12 @@ export class HealthProfileComponent implements OnInit {
  
   industries = [{id:"Male"},{id:"Female"},{id:"Others"}];          
   ngOnInit(): void {
-    this.myDateValue = new Date();
     this.healthDetails();
   }
 
   
-  onDateChange(newDate: Date) {
-   // this.date=new Date();
-    this.updatedDate =this.datepipe.transform(newDate, 'yyyy-MM-dd');
-    
-    console.log("called====="+ this.updatedDate);
+  changeDateFormat(newDate: Date) {
+    return this.datepipe.transform(newDate, 'yyyy-MM-dd');
   }
 
 
@@ -50,6 +46,7 @@ export class HealthProfileComponent implements OnInit {
       .subscribe((healthProfile: any) => {
         // alert(JSON.stringify(waterReadings));
         this.user  = healthProfile.data;      
+        this.bsDateDOB = healthProfile.data.dob;
         console.log("value===="+ this.user['id']);
     }, error => {
       console.log("health profile error");
@@ -59,14 +56,18 @@ export class HealthProfileComponent implements OnInit {
     
   submitHealthDetails(healthForm:NgForm){
     const changedValues = this.getDirtyValues(healthForm);
-    console.log({changedValues});
-    this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
-      .subscribe(data => {
-          // alert(JSON.stringify(data));
-          this.healthDetails();
-      }, error => {
-        console.log("health profile error");
-      });
+    if (this.user.dob !== this.bsDateDOB) {
+      changedValues['dob'] = this.changeDateFormat(this.bsDateDOB);
+    }
+    if (Object.keys(changedValues).length) {
+      this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
+        .subscribe(data => {
+            // alert(JSON.stringify(data));
+            this.healthDetails();
+        }, error => {
+          console.log("health profile error");
+        });
+    }
 
   }
   
@@ -88,16 +89,18 @@ export class HealthProfileComponent implements OnInit {
   
 
   updateUserProfile(user:NgForm){
-    console.log("this.updatedDate===="+this.updatedDate);
     const changedValues = this.getDirtyValues(user);
-    console.log("cahngedvalues============="+ JSON.stringify(changedValues));
-
-    this.http.put(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
-      .subscribe(data => {
-        this.healthDetails();
-      }, error => {
-        console.log("health profile error");
-      });
+    if (this.user.dob !== this.bsDateDOB) {
+      changedValues['dob'] = this.changeDateFormat(this.bsDateDOB);
+    }
+    if (Object.keys(changedValues).length) {
+      this.http.put(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
+        .subscribe(data => {
+          this.healthDetails();
+        }, error => {
+          console.log("health profile error");
+        });
+    }
   }
 
   getDirtyValues(form: any) {
@@ -105,7 +108,6 @@ export class HealthProfileComponent implements OnInit {
     Object.keys(form.controls)
         .forEach(key => {
             let currentControl = form.controls[key];
-
             if (currentControl.dirty) {
                 if (currentControl.controls)
                     dirtyValues[key] = this.getDirtyValues(currentControl);

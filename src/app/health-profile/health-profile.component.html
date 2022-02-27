@@ -66,9 +66,10 @@
                                         [minDate]="minDate"
                                         [maxDate]="maxDate"
                                         #dp="bsDatepicker"
-                                        (bsValueChange)="onDateChange($event)"
-                                        bsDatepicker [(bsValue)]="myDateValue"
-                                       
+                                        bsDatepicker 
+                                        [(ngModel)]="bsDateDOB"
+                                        name="dob"
+                                        [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
                                         >
                                     </div>
                                 </div>
