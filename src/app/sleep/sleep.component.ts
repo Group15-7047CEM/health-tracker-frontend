@@ -22,6 +22,9 @@ export class SleepComponent implements OnInit {
   updatedStartDate;
   updatedEndDate;
   updatedToday;
+  startTime: Date = new Date();
+  endTime: Date = new Date();
+
   constructor(private formBuilder: FormBuilder, private http: HttpClient,private properties: Properties,public datepipe: DatePipe) { }
   show()
   {
@@ -81,14 +84,34 @@ onSubmit() {
 }
 
 
-updateSleep(user:NgForm){
-  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/sleep/', this.user)
+updateSleep(sleepData:NgForm){
+  let {sleepStartTime, sleepEndTime, trackedDate} = sleepData.value;
+  if (trackedDate) {
+    trackedDate = this.changeDateFormat(trackedDate);
+  }
+  const updatedStart = this.combineDateWithTime(sleepStartTime, this.startTime);
+  const updatedEnd = this.combineDateWithTime(sleepEndTime, this.endTime);
+
+  const trackedSleepData = {
+    sleepStartTime: updatedStart,
+    sleepEndTime: updatedEnd,
+    trackedDate
+  }
+  this.http.post(this.properties.API_ENDPOINT + '/health-tracking/sleep/', trackedSleepData)
     .subscribe(data => {
     }, error => {
       console.log("health profile error");
     });
-    this.user = {};
     this.hide();
 }
 
+  changeDateFormat(newDate: Date) {
+    return this.datepipe.transform(newDate, 'yyyy-MM-dd');
+  }
+
+
+  combineDateWithTime(date, time){
+    date.setHours(time.getHours(), time.getMinutes(), time.getSeconds());
+    return date;
+  }
 }

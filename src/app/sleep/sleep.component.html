@@ -1,97 +1,88 @@
 <div class="container">
-    
-    <!-- <h1 class="text-center">Register with bootstrap popup</h1> -->
-    
-  
-    <div class="lg-tt-rr">
-      <p>Recommended</p>
-      <h3 class="day"><span>8:00</span> hrs</h3>
-    </div>
-    <div class="lg-tt-rr"  style="text-align:center;">
-      <h3 class="day"><span class="ng-binding">0</span> hrs &nbsp;<span class="ng-binding">0</span> min</h3>
-      <p>Recently logged sleep data</p>
-    </div>
-   
-    <button type="button" class="btn btn-info btn-fill pull-right" (click) = "show()">Log Sleep</button> 
+
+  <!-- <h1 class="text-center">Register with bootstrap popup</h1> -->
 
 
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-    </div>
-  <!-- Creates the bootstrap modal where the image will appear -->
-  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Log Sleep</h4>
-      </div>
-      <div class="modal-body">
-        <form #registerForm="ngForm" (ngSubmit)="updateSleep(registerForm)" autocomplete="off" id="registerForm"  role="form" name="registerForm" novalidate>  
-          <div class="row">
-                       
-                         <div class="col-sm-6">
-                            <div class="form-group">
-                               <label>Sleep Start Time</label>
-                               <input type="text"
-                               class="form-control"
-                               [minDate]="minDate"
-                               [maxDate]="maxDate"
-                               #dp="bsDatepicker"
-                               (bsValueChange)="onStartDateChange($event)"
-                               bsDatepicker [(bsValue)]="startDateValue"
-                              
-                               >
-                               <!-- <input id="sleepStartTime" type="text" name="sleepStartTime" class="form-control" [(ngModel)]="user.sleepStartTime" #sleepStartTime="ngModel" placeholder="sleepStartTime "> -->
-                            
-                            </div>
-                         </div>
-                         <div class="col-sm-6">
-                               <div class="form-group">
-                                  <label>Sleep End Time</label>
-                                  <!-- <input id="sleepEndTime" type="text" name="sleepEndTime" class="form-control" [(ngModel)]="user.sleepEndTime" #sleepEndTime="ngModel" placeholder="sleepEndTime "> -->
-                                  <input type="text"
-                                  class="form-control"
-                                  [minDate]="minDate"
-                                  [maxDate]="maxDate"
-                                  #dp="bsDatepicker"
-                                  (bsValueChange)="onEndDateChanges($event)"
-                                  bsDatepicker [(bsValue)]="endDateValue"
-                                 
-                                  >
-                               </div>
-                            </div>
-
-                            <div class="col-sm-6">
-                              <div class="form-group">
-                                 <label>Tracked Date</label>
-                                 <!-- <input id="trackedDate" type="text" name="trackedDate" class="form-control" [(ngModel)]="user.trackedDate" #trackedDate="ngModel" placeholder="trackedDate "> -->
-      
-                                 <input type="text"
-                                 class="form-control"
-                                 [minDate]="minDate"
-                                 [maxDate]="maxDate"
-                                 #dp="bsDatepicker"
-                                 (bsValueChange)="trackedChange($event)"
-                                 bsDatepicker [(bsValue)]="trackedDate"
-                                
-                                 >
-                              </div>
-                           </div>
-                        
-             </div>
-             <button type="submit" class="btn btn-info btn-fill ">Save</button>
-             <button type="button" class="btn btn-info btn-primary " data-dismiss="modal" (click) = "hide()">Cancel</button>
-
-                </form>
-     
-    
+  <div class="lg-tt-rr">
+    <p>Recommended</p>
+    <h3 class="day"><span>8:00</span> hrs</h3>
   </div>
-      <!-- <div class="modal-footer">
+  <div class="lg-tt-rr" style="text-align:center;">
+    <h3 class="day"><span class="ng-binding">0</span> hrs &nbsp;<span class="ng-binding">0</span> min</h3>
+    <p>Recently logged sleep data</p>
+  </div>
+
+  <button type="button" class="btn btn-info btn-fill pull-right" (click)="show()">Log Sleep</button>
+
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  </div>
+  <!-- Creates the bootstrap modal where the image will appear -->
+  <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Log Sleep</h4>
+        </div>
+        <div class="modal-body">
+          <form #registerForm="ngForm" (ngSubmit)="updateSleep(registerForm)" autocomplete="off" id="registerForm"
+            role="form" name="registerForm" novalidate>
+            <div class="row">
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Sleep Start Time</label>
+                  <input type="text" class="form-control" #dp="bsDatepicker" bsDatepicker ngModel
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" name="sleepStartTime" required>
+                  <ng-template #popStartTemplate>
+                    <timepicker [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}"></timepicker>
+                  </ng-template>
+                  <input [ngModel]="startTime | date:'shortTime'" (ngModelChange)="startTime=$event"
+                    [ngModelOptions]="{standalone: true}" [popover]="popStartTemplate" [outsideClick]="true"
+                    placement="bottom" />
+
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Sleep End Time</label>
+                  <input class="form-control" #dp="bsDatepicker" bsDatepicker ngModel
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" name="sleepEndTime" required>
+                  <ng-template #popEndTemplate>
+                    <timepicker [(ngModel)]="endTime" [ngModelOptions]="{standalone: true}"></timepicker>
+                  </ng-template>
+                  <input [ngModel]="endTime | date:'shortTime'" (ngModelChange)="endTime=$event"
+                    [ngModelOptions]="{standalone: true}" [popover]="popEndTemplate" [outsideClick]="true"
+                    placement="bottom" />
+
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Tracked Date</label>
+                  <input class="form-control" #dp="bsDatepicker" bsDatepicker ngModel
+                    [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" name="trackedDate" required>
+                </div>
+              </div>
+
+            </div>
+            <button type="submit" class="btn btn-info btn-fill ">Save</button>
+            <button type="button" class="btn btn-info btn-primary " data-dismiss="modal"
+              (click)="hide()">Cancel</button>
+
+          </form>
+
+
+        </div>
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
       
       </div> -->
+      </div>
     </div>
-  </div>
   </div>

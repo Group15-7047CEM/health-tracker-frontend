@@ -8,6 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { PopoverModule } from 'ngx-bootstrap/popover';
+
 import { AppRoutingModule } from './app.routing';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
@@ -36,6 +39,8 @@ import { WeightComponent } from './weight/weight.component';
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     DatepickerModule.forRoot(),
+    TimepickerModule.forRoot(), 
+    PopoverModule.forRoot(),
     RouterModule,
     HttpClientModule,
     NavbarModule,
