@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { FormBuilder, FormGroup, Validators, NgForm,ReactiveFormsModule} from '@angular/forms';
 import { Properties } from '../properties';
-import { DatePipe } from '@angular/common'
+import { DatePipe } from '@angular/common';
+import { EChartsOption } from 'echarts';
 @Component({
   selector: 'app-sleep',
   templateUrl: './sleep.component.html',
@@ -18,7 +19,10 @@ export class SleepComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+  chartOption: EChartsOption = {};
+  readings: any[] = [];
   user: any ={};
+  sleepToday:any;
   updatedStartDate;
   updatedEndDate;
   updatedToday;
@@ -46,6 +50,30 @@ export class SleepComponent implements OnInit {
         firstname: ['', [Validators.required, Validators.minLength(6)]],
         mobile: ['', [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/), Validators.minLength(10)]]
     });
+    this.getSleepReadings();
+}
+
+
+async getSleepReadings() {
+   
+  this.http.get(this.properties.API_ENDPOINT + '/health-tracking/sleep?startDate=2022-01-01&endDate=2022-03-30')
+    .subscribe((sleepReadings: any) => {
+      this.readings = sleepReadings.data.sleepReadings;
+      this.sleepToday = this.getSleepFromMl(this.readings);
+      const readings = [...this.readings].reverse();
+      let chartOption = {};
+      chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
+      chartOption['yAxis'] = { type: 'value' };
+      chartOption['series'] = [{ data: readings.map(w => w.sleepMins), type: 'line' }]
+      this.chartOption = chartOption;
+    }, error => {
+      console.log("health profile error");
+    });
+
+}
+
+getSleepFromMl(readings) {
+  return readings.length ? Math.ceil(readings[0].sleepMins) || 0 : 0;
 }
 
 onStartDateChange(newDate: Date) {
@@ -99,9 +127,11 @@ updateSleep(sleepData:NgForm){
   }
   this.http.post(this.properties.API_ENDPOINT + '/health-tracking/sleep/', trackedSleepData)
     .subscribe(data => {
+      this.getSleepReadings();
     }, error => {
       console.log("health profile error");
     });
+    
     this.hide();
 }
 
