@@ -21,6 +21,7 @@ export class WaterComponent implements OnInit {
 
   chartOption: EChartsOption = {};
   readings: any[] = [];
+  glassesToday: any;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,13 +55,14 @@ export class WaterComponent implements OnInit {
   async getWaterReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/water?startDate=2022-01-01&endDate=2022-04-30')
       .subscribe((waterReadings: any) => {
-        const readings = waterReadings.data.waterReadings.reverse();
+        this.readings = waterReadings.data.waterReadings;
+        this.glassesToday = this.getGlassesFromMl(this.readings);
+        const readings = [...this.readings].reverse(); // ascending for chart
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
         chartOption['yAxis'] = {type: 'value'};
         chartOption['series'] = [{ data: readings.map(w => w.waterIntake), type: 'line' }]
         this.chartOption = chartOption;
-        this.readings = readings;
     }, error => {
       console.log("health profile error");
     });
@@ -80,6 +82,9 @@ onSubmit() {
    
 }
 
+getGlassesFromMl(readings) {
+  return readings.length ? Math.ceil(readings[0].waterIntake / 250) || 0 : 0;
+}
 
 updateWater(user:NgForm){
   console.log(JSON.stringify(this.user));
