@@ -16,12 +16,9 @@ export class LoginComponent implements OnInit {
    
   }
   submit(loginForm: NgForm){
-    // alert("called==")
-    // this.router.navigate(['/', 'health']);
-    alert(JSON.stringify(this.user));
+    
     var loginPromise = this.IdentityService.getAccessToken(this.user.email, this.user.password);
 
-    //var loginPromise = this.IdentityService.getAccessToken("guyritchie.cc@yopmail.com", "Healthify@123");
 
     var scope = this;
     loginPromise.then(function(data) {

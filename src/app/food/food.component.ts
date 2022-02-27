@@ -16,6 +16,7 @@ export class FoodComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+  foodToday: any;
 
   chartOption: EChartsOption = {};
   readings: any[] = [];
@@ -49,10 +50,15 @@ export class FoodComponent implements OnInit {
 
 }
 
+getFoodFromMl(readings) {
+  return readings.length ? Math.ceil(readings[0].totalCalories ) || 0 : 0;
+}
+
   async getFoodReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/food?startDate=2022-01-01&endDate=2022-03-30')
       .subscribe((foodReadings: any) => {
         this.readings = foodReadings.data.foodReadings;
+        this.foodToday = this.getFoodFromMl(this.readings);
         const readings = [...this.readings].reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }

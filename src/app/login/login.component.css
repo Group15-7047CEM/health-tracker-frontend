@@ -1,0 +1,10 @@
+.logtext{
+    font-size: 30px !important;
+    font-family: cursive;
+    font-weight: 800 !important;
+    text-shadow: 1px 2px 5px #858585;
+    border: 6px double #39126d;
+    width: 75%;
+    margin: auto;
+    padding: 15px;
+}

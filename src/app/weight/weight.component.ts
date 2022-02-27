@@ -17,7 +17,7 @@ export class WeightComponent  implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-
+  weightToday:any;
   chartOption: EChartsOption = {};
   readings: any[] = [];
 
@@ -49,11 +49,15 @@ export class WeightComponent  implements OnInit {
     this.getWeightReadings();
 
 }
+getWeightFromMl(readings) {
+  return readings.length ? Math.ceil(readings[0].weight) || 0 : 0;
+}
 
   async getWeightReadings () {
     this.http.get(this.properties.API_ENDPOINT + '/health-tracking/weight?startDate=2022-01-01&endDate=2022-03-30')
       .subscribe((weightReadings: any) => {
         this.readings = weightReadings.data.weightReadings;
+        this.weightToday = this.getWeightFromMl(this.readings);
         const readings = [...this.readings].reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }

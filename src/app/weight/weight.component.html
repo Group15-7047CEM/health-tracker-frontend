@@ -3,16 +3,13 @@
     <!-- <h1 class="text-center">Register with bootstrap popup</h1> -->
   
   
-    <div class="col-sm-12">
-       <div class="lg-tt-rr">
-          <!-- <p>You can consume </p> -->
-          <h3 class="day">You can consume <span>4236 </span> Calories</h3>
-       </div>
-    </div>
+   
   
-    <div class="lg-tt-rr" style="text-align:center;"><br><br><br><br><br>
-       <h3 class="day ng-binding"><span class="ng-binding">0</span> You consumed calories food</h3>
-       <!-- <p>calories food</p> -->
+    <div class="lg-tt-rr" style="text-align:center;">
+      <h3 class="day ng-binding">
+        <span class="ng-binding">{{weightToday}}</span> is your current logged weight
+      </h3>
+     
     </div>
   
     <button type="button" class="btn btn-info btn-fill pull-right" (click)="show()">Log Weight</button>
@@ -76,6 +73,7 @@
        <h3 class="day ng-binding">
         Weight Entries
        </h3>
+       <div class="small_boxtable">
        <table class="table table-striped" style="overflow-x: auto;">
           <thead>
           <tr>
@@ -90,6 +88,7 @@
           </tr>
           </tbody>
        </table>
+       </div>
        </div>
     </div>
   

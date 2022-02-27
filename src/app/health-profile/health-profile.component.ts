@@ -33,6 +33,7 @@ export class HealthProfileComponent implements OnInit {
   industries = [{id:"Male"},{id:"Female"},{id:"Others"}];          
   ngOnInit(): void {
     this.healthDetails();
+   
   }
 
   
@@ -47,6 +48,7 @@ export class HealthProfileComponent implements OnInit {
         // alert(JSON.stringify(waterReadings));
         this.user  = healthProfile.data;      
         this.bsDateDOB = healthProfile.data.dob;
+        this.sum();
         console.log("value===="+ this.user['id']);
     }, error => {
       console.log("health profile error");
@@ -62,7 +64,7 @@ export class HealthProfileComponent implements OnInit {
     if (Object.keys(changedValues).length) {
       this.http.post(this.properties.API_ENDPOINT + '/users/'+this.user['id'], changedValues)
         .subscribe(data => {
-            // alert(JSON.stringify(data));
+          
             this.healthDetails();
         }, error => {
           console.log("health profile error");
@@ -71,20 +73,19 @@ export class HealthProfileComponent implements OnInit {
 
   }
   
-  sum() {    
+  sum() { 
+  
     this.num1 = this.user.height;
     this.num2 = this.user.currentWeight;
-    if (this.num1.value !== '')
-    {
-        if (this.num2.value !== '') {
-          var  a= parseInt(this.num1.value,0);
-          var b= parseInt(this.num2.value,0);
+         
+          var  a= parseInt(this.num1,0);
+          var b= parseInt(this.num2,0);
            var sum = (a/(b*b))*10000;
          // document.getElementById('result').value  = sum ;
           this.BMI= sum;
+        
           //parseFloat(<HTMLInputElement>document.getElementById('result')).value = sum;
-        } 
-      }
+             
 }
   
 

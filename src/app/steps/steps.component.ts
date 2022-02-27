@@ -19,7 +19,7 @@ export class StepsComponent implements OnInit {
   user : any = {};
   chartOption: EChartsOption = {};
   readings: any[] = [];
-
+  stepsToday: any;
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
@@ -48,6 +48,7 @@ export class StepsComponent implements OnInit {
       .subscribe((stepReadings: any) => {
         // alert(JSON.stringify(stepReadings));
         this.readings = stepReadings.data.stepReadings;
+        this.stepsToday = this.getStepsFromMl(this.readings);
         const readings = [...this.readings].reverse();
         let chartOption = {};
         chartOption['xAxis'] = { type: 'category', data: readings.map(w => w.trackedDate) }
@@ -58,6 +59,10 @@ export class StepsComponent implements OnInit {
         console.log("health profile error");
       });
 
+  }
+
+  getStepsFromMl(readings) {
+    return readings.length ? Math.ceil(readings[0].steps) || 0 : 0;
   }
 
   // convenience getter for easy access to form fields
@@ -78,6 +83,7 @@ export class StepsComponent implements OnInit {
   updateSteps(user:NgForm){
     this.http.post(this.properties.API_ENDPOINT + '/health-tracking/steps/', this.user)
       .subscribe(data => {
+        this.getStepReadings();
       }, error => {
         console.log("health profile error");
       });
